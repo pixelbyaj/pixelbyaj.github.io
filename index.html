@@ -1,0 +1,105 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PixelByAJ</title>
+    <style>
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+            font-family: arial, helvetica;
+            color: #fff;
+        }
+        
+        h1 {
+            padding: 0;
+            font-size: 8em;
+            margin: 0 0 .25em;
+        }
+        
+        #section1 {
+            background: #ff5f45;
+        }
+        
+        #section1 h1 {
+            font-size: 10em;
+            font-weight: 900;
+            color: #fff;
+        }
+        
+        #section1 h2 {
+            color: rgba(255, 255, 255, .7);
+            font-size: 1.73em;
+            font-weight: 100;
+            margin: -10px 30px 10px;
+            -webkit-font-smoothing: antialiased;
+            margin: 0 auto;
+            width: 50%;
+            word-break: break-all;
+        }
+        
+        .cell {
+            display: table-cell;
+            vertical-align: middle;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .section {
+            text-align: center;
+        }
+        
+        .section.sp-table {
+            display: table;
+            table-layout: fixed;
+            width: 100%;
+        }
+        
+        .github {
+            padding: .25em;
+        }
+        
+        .widget-lg .btn,
+        .widget-lg .social-count {
+            height: 25px !important;
+            padding: 3px 10px;
+            font-size: 12px;
+            line-height: 25px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="singlePage" style="height: 100%; position: relative; touch-action: none; transform: translate3d(0px, 0px, 0px); transition: all 1000ms ease 0s;">
+        <div class="section sp-table" id="section1">
+            <div class="cell">
+                <h1>PixelByAJ</h1>
+                <h2>A Full Stack Software Developer having an experience of building Web applications with JavaScript / ASP.NET CORE / Angular / React and some other cool libraries and frameworks.
+                </h2>
+                <div class="github">
+                    <!-- Place this tag where you want the button to render. -->
+                    <a class="github-button" href="https://github.com/pixelbyaj" data-size="large" data-show-count="true" aria-label="Follow @ntkme on GitHub">Follow</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script type="text/javascript">
+        document.querySelectorAll(".section").forEach(function(x) {
+            x.style = "height:" + window.innerHeight + "px;";
+        });
+        document.querySelectorAll(".cell").forEach(function(x) {
+            x.style = "height:" + window.innerHeight + "px;";
+        });
+    </script>
+</body>
+
+
+</html>
