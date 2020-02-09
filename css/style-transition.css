@@ -1,3 +1,8 @@
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
 body {
     height: 100%;
     margin: 0;
@@ -6,7 +11,6 @@ body {
     -webkit-tap-highlight-color: transparent;
     font-family: arial, helvetica;
     color: #fff;
-    display: flex;
 }
 
 .section.sp-section {
@@ -20,7 +24,7 @@ body {
     position: relative;
 }
 
-.single-page-wrapper {
+.sp-wrapper {
     height: 100%;
     position: relative;
     touch-action: none;
@@ -33,34 +37,13 @@ body {
     height: 100%;
 }
 
-#section-1 {
-    background: #ff5f45;
+.sp-floatLeft {
+    float: left;
 }
 
-#section-2 {
-    background: #0798ec;
-}
-
-#section-3 {
-    background: #fec401;
-}
-
-h1 {
-    padding: 0;
-    font-size: 8em;
-    margin: 0 0 .25em;
-}
-
-a {
-    color: #fff;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #fff;
-    text-decoration: underline;
-}
-
-a.active {
-    text-decoration: underline;
+.navbar-brand {
+    text-decoration: none !important;
+    letter-spacing: -1px;
+    font-weight: 900;
+    text-shadow: 0px 0px 5px #b0adad;
 }

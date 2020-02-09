@@ -1,9 +1,5 @@
 Document.prototype.ready = function(fn) {
-
-
     var readyFunc = function(resolve, reject) {
-
-
         // The ready event handler and self cleanup method
         function completed() {
             document.removeEventListener("DOMContentLoaded", completed);
@@ -34,5 +30,19 @@ Document.prototype.ready = function(fn) {
 };
 
 document.ready(function() {
-    new SinglePage("singlePage")
+    new SinglePageBeta("singlePage", {
+        navigation: "horizontal",
+        easing: "ease",
+        sameurl: false,
+        transitionSpeed: 1000,
+        keyboardNavigation: true,
+        backgroundColor: ["#ff5f45", "#fec401", "#fc6c7c"],
+        pageTransitionStart: (prevPage, currentPage) => {
+            console.log(`prevPage: ${prevPage.id} currentPage :${currentPage.id}`);
+        },
+        pageTransitionEnd: (currentPage) => {
+            console.log(`currentPage :${currentPage.id}`);
+
+        }
+    });
 });

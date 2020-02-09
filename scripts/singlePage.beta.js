@@ -1,22 +1,26 @@
-
-class SinglePageBeta {
-    constructor(id: string, options: any) {
-
+"use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var SinglePageBeta = /** @class */ (function () {
+    function SinglePageBeta(id, options) {
         if (!id) {
             throw "Page element not found";
         }
-        let $ = document;
-        let $e: any = $.getElementById(id);
+        var $ = document;
+        var $e = $.getElementById(id);
         if (!$e) {
             throw "Page element not found";
         }
-
-        const enum Scroll {
-            Horizontal = 1,
-            Vertical = 2
-        }
-
-        let _options: any = {
+        var _options = {
             navigation: "vertical",
             autoScrolling: true,
             scrollbar: false,
@@ -27,87 +31,65 @@ class SinglePageBeta {
             backgroundColor: [],
             backgroundImageUrl: [],
             backgroundCssClass: [],
-            pageTransitionStart: (prevPage: HTMLElement, currentPage: HTMLElement) => { },
-            pageTransitionEnd: (currentPage: HTMLElement) => { },
+            pageTransitionStart: function (prevPage, currentPage) { },
+            pageTransitionEnd: function (currentPage) { },
         };
-
         if (options) {
-            _options = { ..._options, ...options };
+            _options = __assign(__assign({}, _options), options);
         }
-
         //#region Private Variables
-        let scrollWay = Scroll.Vertical;
-        let _scrollings: any[] = [];
-        let _lastScrollCount = 0;
-        let _sectionIds: string[] = [];
-        let _activePageIndex: number;
-        let _activeSection: HTMLElement;
-        let pageIndex: number = 0;
-        let canScroll = true;
-        let scrollerTime: any;
+        var scrollWay = 2 /* Vertical */;
+        var _scrollings = [];
+        var _lastScrollCount = 0;
+        var _sectionIds = [];
+        var _activePageIndex;
+        var _activeSection;
+        var pageIndex = 0;
+        var canScroll = true;
+        var scrollerTime;
         //#endregion
-
         //#region private methods
-
         //#region Html Utility Methods
-        const htmlUtility = {
-            setInitialStyle: () => {
-                $e.style.transform = `translate3d(0px, 0px, 0px)`;
+        var htmlUtility = {
+            setInitialStyle: function () {
+                $e.style.transform = "translate3d(0px, 0px, 0px)";
                 $e.classList.add("sp-wrapper");
             },
-            setSectionClass: (element: any) => {
+            setSectionClass: function (element) {
                 element.classList.add("sp-section");
             },
-            setSectionHeight: (element: any) => {
+            setSectionHeight: function (element) {
                 element.style.height = window.innerHeight + "px";
             },
-            setSectionHorizontal: (element: any) => {
+            setSectionHorizontal: function (element) {
                 element.style.width = (_sectionIds.length * 100) + "%";
                 element.classList.add("sp-floatLeft");
-                element.querySelectorAll(".section").forEach((e: any) => {
+                element.querySelectorAll(".section").forEach(function (e) {
                     e.classList.add("sp-floatLeft");
                     e.style.width = (100 / _sectionIds.length) + "%";
-
                 });
             },
-            getCellElement: (): any => {
+            getCellElement: function () {
                 var cellDiv = $.createElement("div");
                 cellDiv.setAttribute("class", "sp-cell");
                 htmlUtility.setSectionHeight(cellDiv);
                 return cellDiv;
             },
-            setBackgroundColor: (element: any, color: any) => {
+            setBackgroundColor: function (element, color) {
                 element.style.backgroundColor = color;
             },
-            setBackgroundCssClass: (element: any, cssClass: any) => {
+            setBackgroundCssClass: function (element, cssClass) {
                 element.classList.add(cssClass);
             },
-            setBackgroundImageUrl: (element: any, imageUrl: any) => {
+            setBackgroundImageUrl: function (element, imageUrl) {
                 element.style.imageUrl(imageUrl);
             }
-        }
+        };
         //#endregion
-
         //#region Scroll Events
-        const scrollEvents = {
-            scrollPageUp: () => {
-                let sec_id: string = "";
-                if (_activePageIndex > 0) {
-                    sec_id = _sectionIds[--_activePageIndex];
-                } else {
-                    if (_options.autoScrolling) {
-                        _activePageIndex = _sectionIds.length - 1;
-                        sec_id = _sectionIds[_activePageIndex];
-                    }
-                }
-                if (sec_id === "") {
-                    canScroll = true;
-                    return;
-                }
-                scrollEvents.scrollToSection(sec_id, Scroll.Vertical);
-            },
-            scrollPageRight: () => {
-                let sec_id: string = "";
+        var scrollEvents = {
+            scrollPageUp: function () {
+                var sec_id = "";
                 if (_activePageIndex > 0) {
                     sec_id = _sectionIds[--_activePageIndex];
                 }
@@ -121,13 +103,31 @@ class SinglePageBeta {
                     canScroll = true;
                     return;
                 }
-                scrollEvents.scrollToSection(sec_id, Scroll.Horizontal);
+                scrollEvents.scrollToSection(sec_id, 2 /* Vertical */);
             },
-            scrollPageDown: () => {
-                let sec_id: string = "";
+            scrollPageRight: function () {
+                var sec_id = "";
+                if (_activePageIndex > 0) {
+                    sec_id = _sectionIds[--_activePageIndex];
+                }
+                else {
+                    if (_options.autoScrolling) {
+                        _activePageIndex = _sectionIds.length - 1;
+                        sec_id = _sectionIds[_activePageIndex];
+                    }
+                }
+                if (sec_id === "") {
+                    canScroll = true;
+                    return;
+                }
+                scrollEvents.scrollToSection(sec_id, 1 /* Horizontal */);
+            },
+            scrollPageDown: function () {
+                var sec_id = "";
                 if (_activePageIndex < _sectionIds.length - 1) {
-                    sec_id = _sectionIds[++_activePageIndex]
-                } else {
+                    sec_id = _sectionIds[++_activePageIndex];
+                }
+                else {
                     if (_options.autoScrolling) {
                         _activePageIndex = 0;
                         sec_id = _sectionIds[_activePageIndex];
@@ -137,13 +137,14 @@ class SinglePageBeta {
                     canScroll = true;
                     return;
                 }
-                scrollEvents.scrollToSection(sec_id, Scroll.Vertical);
+                scrollEvents.scrollToSection(sec_id, 2 /* Vertical */);
             },
-            scrollPageLeft: () => {
-                let sec_id: string = "";
+            scrollPageLeft: function () {
+                var sec_id = "";
                 if (_activePageIndex < _sectionIds.length - 1) {
-                    sec_id = _sectionIds[++_activePageIndex]
-                } else {
+                    sec_id = _sectionIds[++_activePageIndex];
+                }
+                else {
                     if (_options.autoScrolling) {
                         _activePageIndex = 0;
                         sec_id = _sectionIds[_activePageIndex];
@@ -153,25 +154,24 @@ class SinglePageBeta {
                     canScroll = true;
                     return;
                 }
-                scrollEvents.scrollToSection(sec_id, Scroll.Horizontal);
+                scrollEvents.scrollToSection(sec_id, 1 /* Horizontal */);
             },
-            scrollToSection: (sectionId: any, ScrollWay: Scroll) => {
-                _activeSection = $.querySelector(`[data-anchor='${sectionId}']`) as HTMLElement;
+            scrollToSection: function (sectionId, ScrollWay) {
+                _activeSection = $.querySelector("[data-anchor='" + sectionId + "']");
                 _activePageIndex = _sectionIds.indexOf(sectionId);
                 if (_activeSection) {
-                    $e.style.transition = `all ${_options.scrollingSpeed}ms ${_options.easing} 0s`;
-
+                    $e.style.transition = "all " + _options.scrollingSpeed + "ms " + _options.easing + " 0s";
                     switch (ScrollWay) {
-                        case Scroll.Horizontal:
+                        case 1 /* Horizontal */:
                             pageIndex = _activePageIndex * window.innerWidth;
-                            $e.style.transform = `translate3d(-${pageIndex}px, 0px, 0px)`;
+                            $e.style.transform = "translate3d(-" + pageIndex + "px, 0px, 0px)";
                             break;
-                        case Scroll.Vertical:
+                        case 2 /* Vertical */:
                             pageIndex = _activePageIndex * window.innerHeight;
                             if (_activeSection.offsetTop > 0) {
                                 pageIndex = pageIndex > _activeSection.offsetTop ? pageIndex : _activeSection.offsetTop;
                             }
-                            $e.style.transform = `translate3d(0px, -${pageIndex}px, 0px)`;
+                            $e.style.transform = "translate3d(0px, -" + pageIndex + "px, 0px)";
                             break;
                     }
                     if (!_options.sameurl) {
@@ -187,32 +187,31 @@ class SinglePageBeta {
                     // }, _options.scrollingSpeed);
                 }
             }
-        }
+        };
         //#endregion
-
         //#region Event Listners Methods
-        const eventListners = {
-            keyDown: (key: { which: any; }) => {
+        var eventListners = {
+            keyDown: function (key) {
                 switch (key.which) {
-                    case 37://ArrowLeft
+                    case 37: //ArrowLeft
                         if (canScroll && _options.navigation === "horizontal") {
                             canScroll = false;
                             scrollEvents.scrollPageRight();
                         }
                         break;
-                    case 38://ArrowUp
+                    case 38: //ArrowUp
                         if (canScroll && _options.navigation === "vertical") {
                             canScroll = false;
                             scrollEvents.scrollPageUp();
                         }
                         break;
-                    case 39://ArrowRight
+                    case 39: //ArrowRight
                         if (canScroll && _options.navigation === "horizontal") {
                             canScroll = false;
                             scrollEvents.scrollPageLeft();
                         }
                         break;
-                    case 40://ArrowDown
+                    case 40: //ArrowDown
                         if (canScroll && _options.navigation === "vertical") {
                             canScroll = false;
                             scrollEvents.scrollPageDown();
@@ -220,23 +219,20 @@ class SinglePageBeta {
                         break;
                 }
             },
-            mouseWheel: (e: any) => {
+            mouseWheel: function (e) {
                 _scrollings.push(_lastScrollCount);
                 // cross-browser wheel delta
                 e = e || window.event;
                 var value = e.wheelDelta || -e.deltaY || -e.detail;
                 var delta = Math.max(-1, Math.min(1, value));
-
                 var horizontalDetection = typeof e.wheelDeltaX !== 'undefined' || typeof e.deltaX !== 'undefined';
                 var isScrollingVertically = (Math.abs(e.wheelDeltaX) < Math.abs(e.wheelDelta)) || (Math.abs(e.deltaX) < Math.abs(e.deltaY) || !horizontalDetection);
-
                 //preventing to scroll the site on mouse wheel when scrollbar is present
                 if (_options.scrollbar) {
                     e.preventDefault();
                 }
-
                 clearTimeout(scrollerTime);
-                scrollerTime = setTimeout(() => {
+                scrollerTime = setTimeout(function () {
                     if (canScroll && (_lastScrollCount === _scrollings.length)) {
                         canScroll = false;
                         _scrollings = [];
@@ -245,13 +241,13 @@ class SinglePageBeta {
                         var averageEnd = utilityMethod.getAverage(_scrollings, 10);
                         var averageMiddle = utilityMethod.getAverage(_scrollings, 70);
                         var isAccelerating = averageEnd >= averageMiddle;
-
                         //to avoid double swipes...
                         if (isAccelerating && isScrollingVertically) {
                             //scrolling down?
                             if (delta < 0) {
                                 _options.navigation === "vertical" ? scrollEvents.scrollPageDown() : scrollEvents.scrollPageLeft();
-                            } else {
+                            }
+                            else {
                                 _options.navigation === "vertical" ? scrollEvents.scrollPageUp() : scrollEvents.scrollPageRight();
                             }
                         }
@@ -260,79 +256,81 @@ class SinglePageBeta {
                 _lastScrollCount = _scrollings.length;
                 return false;
             },
-            windowSize: () => {
+            windowSize: function () {
                 var activeId;
-                document.querySelectorAll(".section").forEach((element: any) => {
+                document.querySelectorAll(".section").forEach(function (element) {
                     htmlUtility.setSectionHeight(element);
                     htmlUtility.setSectionHeight(element.querySelector(".sp-cell"));
                     if (element.classList.contains("active")) {
-                        activeId = element.getAttribute("data-anchor")
+                        activeId = element.getAttribute("data-anchor");
                     }
                 });
                 scrollEvents.scrollToSection(activeId, scrollWay);
-
             },
-            hashChange: () => {
+            hashChange: function () {
+                var _a;
                 if (!_options.sameurl) {
-                    let hash = location.hash?.replace("#", "");
+                    var hash = (_a = location.hash) === null || _a === void 0 ? void 0 : _a.replace("#", "");
                     scrollEvents.scrollToSection(hash, scrollWay);
                 }
             },
-            transitionStart: (e: any) => {
-                const section = $.querySelector(".section.active");
-                section?.classList.remove("active");
+            transitionStart: function (e) {
+                var _a;
+                var section = $.querySelector(".section.active");
+                (_a = section) === null || _a === void 0 ? void 0 : _a.classList.remove("active");
                 if (_options.pageTransitionStart instanceof Function) {
                     _options.pageTransitionStart(section, _activeSection);
                 }
             },
-            transitionEnd: (e: any) => {
+            transitionEnd: function (e) {
                 _activeSection.classList.add("active");
                 canScroll = true;
                 if (_options.pageTransitionEnd instanceof Function) {
                     _options.pageTransitionEnd(_activeSection);
                 }
             }
-        }
+        };
         //#endregion
-
         //#region Utility Method
-        const utilityMethod = {
-            initSections: () => {
+        var utilityMethod = {
+            initSections: function () {
+                var _a;
                 htmlUtility.setInitialStyle();
-                let sectionIndex = 0;
-
-                $e.querySelectorAll(".section").forEach((element: any) => {
-                    let anchorId = "page" + (++sectionIndex);
+                var sectionIndex = 0;
+                $e.querySelectorAll(".section").forEach(function (element) {
+                    var anchorId = "page" + (++sectionIndex);
                     element.setAttribute("data-anchor", anchorId);
                     htmlUtility.setSectionClass(element);
                     htmlUtility.setSectionHeight(element);
                     _sectionIds.push(anchorId);
-                    const cellEle = htmlUtility.getCellElement();
+                    var cellEle = htmlUtility.getCellElement();
                     cellEle.innerHTML = element.innerHTML;
                     element.innerHTML = "";
                     element.appendChild(cellEle);
-                    const _index = _sectionIds.length - 1;
+                    var _index = _sectionIds.length - 1;
                     if (_options.backgroundColor.length > 0) {
                         htmlUtility.setBackgroundColor(element, _options.backgroundColor[_index]);
-                    } else if (_options.backgroundCssClass.length > 0) {
+                    }
+                    else if (_options.backgroundCssClass.length > 0) {
                         htmlUtility.setBackgroundCssClass(element, _options.backgroundCssClass[_index]);
-                    } else if (_options.backgroundImageUrl.length > 0) {
+                    }
+                    else if (_options.backgroundImageUrl.length > 0) {
                         htmlUtility.setBackgroundImageUrl(element, _options.backgroundImageUrl[_index]);
                     }
                 });
-
                 if (_options.navigation.toLowerCase() === "horizontal") {
                     htmlUtility.setSectionHorizontal($e);
-                    scrollWay = Scroll.Horizontal;
+                    scrollWay = 1 /* Horizontal */;
                 }
-                let activeId: string | null = _sectionIds[0];
+                var activeId = _sectionIds[0];
                 if (!_options.sameurl) {
-                    let hash = location.hash?.replace("#", "");
+                    var hash = (_a = location.hash) === null || _a === void 0 ? void 0 : _a.replace("#", "");
                     if (hash) {
                         activeId = hash;
                     }
-                } else {
-                    let active = document.querySelector(".section.active");
+                }
+                else {
+                    var active = document.querySelector(".section.active");
                     if (active !== null) {
                         activeId = active.getAttribute("data-anchor");
                     }
@@ -340,7 +338,7 @@ class SinglePageBeta {
                 scrollEvents.scrollToSection(activeId, scrollWay);
                 utilityMethod.addEventListeners($e);
             },
-            addEventListeners: ($element: HTMLElement) => {
+            addEventListeners: function ($element) {
                 //keyboard navigation event
                 if (_options.keyboardNavigation) {
                     document.removeEventListener("keydown", eventListners.keyDown);
@@ -362,22 +360,18 @@ class SinglePageBeta {
                     window.addEventListener('hashchange', eventListners.hashChange);
                 }
             },
-            getAverage: (eleList: any, num: any) => {
-                let sum = 0;
-
-                let lastEles = eleList.slice(Math.max(eleList.length - num, 1));
-
+            getAverage: function (eleList, num) {
+                var sum = 0;
+                var lastEles = eleList.slice(Math.max(eleList.length - num, 1));
                 for (var i = 0; i < lastEles.length; i++) {
                     sum = sum + lastEles[i];
                 }
-
                 return Math.ceil(sum / num);
             }
-        }
+        };
         //#endregion
-
         //#endregion
         utilityMethod.initSections();
     }
-
-}
+    return SinglePageBeta;
+}());

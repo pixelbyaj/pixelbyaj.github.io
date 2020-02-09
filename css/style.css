@@ -1,0 +1,19 @@
+h1 {
+    padding: 0;
+    font-size: 8em;
+    font-weight: 900;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+a.active {
+    text-decoration: underline;
+}
