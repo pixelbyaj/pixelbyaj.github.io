@@ -47,3 +47,6 @@ body {
     font-weight: 900;
     text-shadow: 0px 0px 5px #b0adad;
 }
+.navbar-dark button:focus{
+    outline:none !important;
+}
