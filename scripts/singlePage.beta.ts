@@ -17,6 +17,7 @@ class SinglePageBeta {
         }
 
         let _options: any = {
+            sections: [],
             navigation: "vertical",
             autoScrolling: true,
             scrollbar: false,
@@ -24,9 +25,6 @@ class SinglePageBeta {
             easing: "ease",
             sameurl: true,
             keyboardNavigation: true,
-            backgroundColor: [],
-            backgroundImageUrl: [],
-            backgroundCssClass: [],
             pageTransitionStart: (prevPage: HTMLElement, currentPage: HTMLElement) => { },
             pageTransitionEnd: (currentPage: HTMLElement) => { },
         };
@@ -84,6 +82,87 @@ class SinglePageBeta {
             },
             setBackgroundImageUrl: (element: any, imageUrl: any) => {
                 element.style.imageUrl(imageUrl);
+            },
+            getBrandName: (classList: string[], brandName: string): HTMLElement => {
+                
+
+                let navSpan = $.createElement("span");
+                navSpan.classList.add(...classList);
+
+                let textNode = $.createTextNode(brandName);
+                navSpan.appendChild(textNode);
+
+                return navSpan;
+            },
+            getNavigationLink: (classList: string[], anchor: string, anchorId: string): HTMLElement => {
+                let navLi = $.createElement("li");
+                navLi.classList.add("nav-item");
+
+                let navA = $.createElement("a");
+                navA.classList.add(...classList);
+                navA.setAttribute("href", "#" + anchorId);
+
+                let textNode = $.createTextNode(anchor);
+                navA.appendChild(textNode);
+
+                navLi.appendChild(navA);
+                return navLi;
+            },
+            setNavBarToggler: (): HTMLElement => {
+                let btn = $.createElement("button");
+                btn.setAttribute("type", "button");
+                btn.setAttribute("data-toggle", "collapse");
+                btn.setAttribute("data-target", "#navbarNav");
+                btn.setAttribute("aria-controls", "navbarNav");
+                btn.setAttribute("aria-expanded", "false");
+                btn.setAttribute("aria-label", "Toggle navigation");
+                let span = $.createElement("span");
+                span.classList.add("navbar-toggler-icon");
+                btn.appendChild(span);
+                return btn;
+            },
+            setNavigationMenu: () => {
+
+                let nav = $.createElement("nav");
+                const navClass = ["navbar", "fixed-top", "navbar-expand", "navbar-dark", "flex-column", "flex-md-row", "bd-navbar"];
+                nav.classList.add(...navClass);
+               
+                //navbrand name
+                let navBrand = htmlUtility.getBrandName(["navbar-brand", "mb-0", "h1"], _options.brandName);
+                nav.appendChild(navBrand);
+
+                //navbrand toggler
+                let navBarToggler=htmlUtility.setNavBarToggler();
+                nav.appendChild(navBarToggler);
+
+                let navDiv = $.createElement("div");
+                navDiv.setAttribute("id", "navbarNav");
+                navDiv.classList.add("collapse");
+                navDiv.classList.add("navbar-collapse");
+
+                let navUl = $.createElement("ul");
+                navUl.classList.add("nav");
+                navDiv.appendChild(navUl);
+                nav.appendChild(navDiv);
+                $.querySelector("body")?.insertBefore(nav, $.querySelector("#" + id));
+                return navUl;
+            },
+            setSection: (section: any, index: number) => {
+                let sectionDiv = $.createElement("div");
+                sectionDiv.setAttribute("id", "section-" + index);
+                sectionDiv.classList.add("section");
+                if (section.active) {
+                    sectionDiv.classList.add("active");
+                }
+                if (section.templateUrl) {
+                    const response = `<sp-include url="${section.templateUrl}"/>`;
+                    sectionDiv.innerHTML = response;
+                } else if (section.template) {
+                    sectionDiv.innerHTML = section.template;
+                }
+                htmlUtility.setSectionClass(sectionDiv);
+                htmlUtility.setSectionHeight(sectionDiv);
+                return sectionDiv;
             }
         }
         //#endregion
@@ -158,6 +237,18 @@ class SinglePageBeta {
             scrollToSection: (sectionId: any, ScrollWay: Scroll) => {
                 _activeSection = $.querySelector(`[data-anchor='${sectionId}']`) as HTMLElement;
                 _activePageIndex = _sectionIds.indexOf(sectionId);
+                let spInclude = _activeSection.querySelector("sp-include");
+                if (spInclude) {
+                    let url: any = spInclude.getAttribute("url");
+                    fetch(url)
+                        .then((response) => {
+                            return response.text();
+                        })
+                        .then((text) => {
+                            let spCell: any = _activeSection.querySelector(".sp-cell");
+                            spCell.innerHTML = text;
+                        });
+                }
                 if (_activeSection) {
                     $e.style.transition = `all ${_options.scrollingSpeed}ms ${_options.easing} 0s`;
 
@@ -299,27 +390,35 @@ class SinglePageBeta {
         const utilityMethod = {
             initSections: () => {
                 htmlUtility.setInitialStyle();
-                let sectionIndex = 0;
-
-                $e.querySelectorAll(".section").forEach((element: any) => {
-                    let anchorId = "page" + (++sectionIndex);
-                    element.setAttribute("data-anchor", anchorId);
-                    htmlUtility.setSectionClass(element);
-                    htmlUtility.setSectionHeight(element);
-                    _sectionIds.push(anchorId);
+                let navUl: any = htmlUtility.setNavigationMenu();
+                
+                _options.sections.forEach((section: any, index: number) => {
+                    let sectionEle = htmlUtility.setSection(section, index + 1);
+                    let anchorId = "page" + (index + 1);
+                    sectionEle.setAttribute("data-anchor", anchorId);
                     const cellEle = htmlUtility.getCellElement();
-                    cellEle.innerHTML = element.innerHTML;
-                    element.innerHTML = "";
-                    element.appendChild(cellEle);
+                    cellEle.innerHTML = sectionEle.innerHTML;
+                    sectionEle.innerHTML = "";
+                    sectionEle.appendChild(cellEle);
+                    $e.appendChild(sectionEle);
+
+                    //navigation
+                    let navLi = htmlUtility.getNavigationLink(["nav-link"], section.anchor, anchorId);
+                    navUl.appendChild(navLi);
+                    // _options.anchors.forEach((anchor: string, index: number) => {
+                    //     
+                    // });
+                    _sectionIds.push(anchorId);
                     const _index = _sectionIds.length - 1;
-                    if (_options.backgroundColor.length > 0) {
-                        htmlUtility.setBackgroundColor(element, _options.backgroundColor[_index]);
-                    } else if (_options.backgroundCssClass.length > 0) {
-                        htmlUtility.setBackgroundCssClass(element, _options.backgroundCssClass[_index]);
-                    } else if (_options.backgroundImageUrl.length > 0) {
-                        htmlUtility.setBackgroundImageUrl(element, _options.backgroundImageUrl[_index]);
+                    if (section.backgroundColor) {
+                        htmlUtility.setBackgroundColor(sectionEle, section.backgroundColor);
+                    } else if (section.backgroundCssClass) {
+                        htmlUtility.setBackgroundCssClass(sectionEle, _options.backgroundCssClass);
+                    } else if (section.backgroundImageUrl) {
+                        htmlUtility.setBackgroundImageUrl(sectionEle, _options.backgroundImageUrl);
                     }
                 });
+
 
                 if (_options.navigation.toLowerCase() === "horizontal") {
                     htmlUtility.setSectionHorizontal($e);

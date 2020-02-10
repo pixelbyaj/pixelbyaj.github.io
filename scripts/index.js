@@ -31,14 +31,40 @@ Document.prototype.ready = function(fn) {
 
 document.ready(function() {
     new SinglePageBeta("singlePage", {
-        navigation: "horizontal",
+        brandName: "PixelByAJ",
+        sections: [{
+                anchor: "Home",
+                templateUrl: "./views/home.html",
+                backgroundColor: "#ff5f45"
+            },
+            {
+                anchor: "Skills",
+                templateUrl: "./views/skills.html",
+                backgroundColor: "#fec401"
+            },
+            {
+                anchor: "Projects",
+                template: "<h1>Projects</h1>",
+                backgroundColor: "#fc6c7c"
+            },
+            {
+                anchor: "Open Source",
+                templateUrl: "./views/opensource.html",
+                backgroundColor: "#ff5f45"
+            },
+            {
+                anchor: "Achievements",
+                templateUrl: "./views/achievements.html",
+                backgroundColor: "#fec401"
+            }
+        ],
+        //navigation: "horizontal|vertical",
         easing: "ease",
         sameurl: false,
         transitionSpeed: 1000,
         keyboardNavigation: true,
-        backgroundColor: ["#ff5f45", "#fec401", "#fc6c7c"],
         pageTransitionStart: (prevPage, currentPage) => {
-            console.log(`prevPage: ${prevPage.id} currentPage :${currentPage.id}`);
+            console.log(`prevPage: ${prevPage ? prevPage.id : ""} currentPage :${currentPage.id}`);
         },
         pageTransitionEnd: (currentPage) => {
             console.log(`currentPage :${currentPage.id}`);

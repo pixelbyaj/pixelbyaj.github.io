@@ -21,6 +21,7 @@ var SinglePageBeta = /** @class */ (function () {
             throw "Page element not found";
         }
         var _options = {
+            sections: [],
             navigation: "vertical",
             autoScrolling: true,
             scrollbar: false,
@@ -28,9 +29,6 @@ var SinglePageBeta = /** @class */ (function () {
             easing: "ease",
             sameurl: true,
             keyboardNavigation: true,
-            backgroundColor: [],
-            backgroundImageUrl: [],
-            backgroundCssClass: [],
             pageTransitionStart: function (prevPage, currentPage) { },
             pageTransitionEnd: function (currentPage) { },
         };
@@ -83,6 +81,80 @@ var SinglePageBeta = /** @class */ (function () {
             },
             setBackgroundImageUrl: function (element, imageUrl) {
                 element.style.imageUrl(imageUrl);
+            },
+            getBrandName: function (classList, brandName) {
+                var _a;
+                var navSpan = $.createElement("span");
+                (_a = navSpan.classList).add.apply(_a, classList);
+                var textNode = $.createTextNode(brandName);
+                navSpan.appendChild(textNode);
+                return navSpan;
+            },
+            getNavigationLink: function (classList, anchor, anchorId) {
+                var _a;
+                var navLi = $.createElement("li");
+                navLi.classList.add("nav-item");
+                var navA = $.createElement("a");
+                (_a = navA.classList).add.apply(_a, classList);
+                navA.setAttribute("href", "#" + anchorId);
+                var textNode = $.createTextNode(anchor);
+                navA.appendChild(textNode);
+                navLi.appendChild(navA);
+                return navLi;
+            },
+            setNavBarToggler: function () {
+                var btn = $.createElement("button");
+                btn.setAttribute("type", "button");
+                btn.setAttribute("data-toggle", "collapse");
+                btn.setAttribute("data-target", "#navbarNav");
+                btn.setAttribute("aria-controls", "navbarNav");
+                btn.setAttribute("aria-expanded", "false");
+                btn.setAttribute("aria-label", "Toggle navigation");
+                var span = $.createElement("span");
+                span.classList.add("navbar-toggler-icon");
+                btn.appendChild(span);
+                return btn;
+            },
+            setNavigationMenu: function () {
+                var _a;
+                var _b;
+                var nav = $.createElement("nav");
+                var navClass = ["navbar", "fixed-top", "navbar-expand", "navbar-dark", "flex-column", "flex-md-row", "bd-navbar"];
+                (_a = nav.classList).add.apply(_a, navClass);
+                //navbrand name
+                var navBrand = htmlUtility.getBrandName(["navbar-brand", "mb-0", "h1"], _options.brandName);
+                nav.appendChild(navBrand);
+                //navbrand toggler
+                var navBarToggler = htmlUtility.setNavBarToggler();
+                nav.appendChild(navBarToggler);
+                var navDiv = $.createElement("div");
+                navDiv.setAttribute("id", "navbarNav");
+                navDiv.classList.add("collapse");
+                navDiv.classList.add("navbar-collapse");
+                var navUl = $.createElement("ul");
+                navUl.classList.add("nav");
+                navDiv.appendChild(navUl);
+                nav.appendChild(navDiv);
+                (_b = $.querySelector("body")) === null || _b === void 0 ? void 0 : _b.insertBefore(nav, $.querySelector("#" + id));
+                return navUl;
+            },
+            setSection: function (section, index) {
+                var sectionDiv = $.createElement("div");
+                sectionDiv.setAttribute("id", "section-" + index);
+                sectionDiv.classList.add("section");
+                if (section.active) {
+                    sectionDiv.classList.add("active");
+                }
+                if (section.templateUrl) {
+                    var response = "<sp-include url=\"" + section.templateUrl + "\"/>";
+                    sectionDiv.innerHTML = response;
+                }
+                else if (section.template) {
+                    sectionDiv.innerHTML = section.template;
+                }
+                htmlUtility.setSectionClass(sectionDiv);
+                htmlUtility.setSectionHeight(sectionDiv);
+                return sectionDiv;
             }
         };
         //#endregion
@@ -159,6 +231,18 @@ var SinglePageBeta = /** @class */ (function () {
             scrollToSection: function (sectionId, ScrollWay) {
                 _activeSection = $.querySelector("[data-anchor='" + sectionId + "']");
                 _activePageIndex = _sectionIds.indexOf(sectionId);
+                var spInclude = _activeSection.querySelector("sp-include");
+                if (spInclude) {
+                    var url = spInclude.getAttribute("url");
+                    fetch(url)
+                        .then(function (response) {
+                        return response.text();
+                    })
+                        .then(function (text) {
+                        var spCell = _activeSection.querySelector(".sp-cell");
+                        spCell.innerHTML = text;
+                    });
+                }
                 if (_activeSection) {
                     $e.style.transition = "all " + _options.scrollingSpeed + "ms " + _options.easing + " 0s";
                     switch (ScrollWay) {
@@ -296,26 +380,32 @@ var SinglePageBeta = /** @class */ (function () {
             initSections: function () {
                 var _a;
                 htmlUtility.setInitialStyle();
-                var sectionIndex = 0;
-                $e.querySelectorAll(".section").forEach(function (element) {
-                    var anchorId = "page" + (++sectionIndex);
-                    element.setAttribute("data-anchor", anchorId);
-                    htmlUtility.setSectionClass(element);
-                    htmlUtility.setSectionHeight(element);
-                    _sectionIds.push(anchorId);
+                var navUl = htmlUtility.setNavigationMenu();
+                _options.sections.forEach(function (section, index) {
+                    var sectionEle = htmlUtility.setSection(section, index + 1);
+                    var anchorId = "page" + (index + 1);
+                    sectionEle.setAttribute("data-anchor", anchorId);
                     var cellEle = htmlUtility.getCellElement();
-                    cellEle.innerHTML = element.innerHTML;
-                    element.innerHTML = "";
-                    element.appendChild(cellEle);
+                    cellEle.innerHTML = sectionEle.innerHTML;
+                    sectionEle.innerHTML = "";
+                    sectionEle.appendChild(cellEle);
+                    $e.appendChild(sectionEle);
+                    //navigation
+                    var navLi = htmlUtility.getNavigationLink(["nav-link"], section.anchor, anchorId);
+                    navUl.appendChild(navLi);
+                    // _options.anchors.forEach((anchor: string, index: number) => {
+                    //     
+                    // });
+                    _sectionIds.push(anchorId);
                     var _index = _sectionIds.length - 1;
-                    if (_options.backgroundColor.length > 0) {
-                        htmlUtility.setBackgroundColor(element, _options.backgroundColor[_index]);
+                    if (section.backgroundColor) {
+                        htmlUtility.setBackgroundColor(sectionEle, section.backgroundColor);
                     }
-                    else if (_options.backgroundCssClass.length > 0) {
-                        htmlUtility.setBackgroundCssClass(element, _options.backgroundCssClass[_index]);
+                    else if (section.backgroundCssClass) {
+                        htmlUtility.setBackgroundCssClass(sectionEle, _options.backgroundCssClass);
                     }
-                    else if (_options.backgroundImageUrl.length > 0) {
-                        htmlUtility.setBackgroundImageUrl(element, _options.backgroundImageUrl[_index]);
+                    else if (section.backgroundImageUrl) {
+                        htmlUtility.setBackgroundImageUrl(sectionEle, _options.backgroundImageUrl);
                     }
                 });
                 if (_options.navigation.toLowerCase() === "horizontal") {
