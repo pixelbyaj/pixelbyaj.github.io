@@ -120,7 +120,7 @@ var SinglePageBeta = /** @class */ (function () {
                 var _a;
                 var _b;
                 var nav = $.createElement("nav");
-                var navClass = ["navbar", "fixed-top", "navbar-expand-lg"];
+                var navClass = ["navbar", "fixed-top", "navbar-expand-lg","navbar-dark"];
                 (_a = nav.classList).add.apply(_a, navClass);
                 //navbrand name
                 var navBrand = htmlUtility.getBrandName(["navbar-brand", "mb-0", "h1"], _options.brandName);
