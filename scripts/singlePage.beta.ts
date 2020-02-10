@@ -125,7 +125,7 @@ class SinglePageBeta {
             setNavigationMenu: () => {
 
                 let nav = $.createElement("nav");
-                const navClass = ["navbar", "fixed-top", "navbar-expand-lg","navbar-dark"];
+                const navClass = ["navbar", "fixed-top", "navbar-expand","navbar-dark","flex-column","flex-md-row","bd-navbar"];
                 nav.classList.add(...navClass);
                
                 //navbrand name
@@ -133,16 +133,16 @@ class SinglePageBeta {
                 nav.appendChild(navBrand);
 
                 //navbrand toggler
-                let navBarToggler=htmlUtility.setNavBarToggler();
-                nav.appendChild(navBarToggler);
+                //let navBarToggler=htmlUtility.setNavBarToggler();
+               // nav.appendChild(navBarToggler);
 
                 let navDiv = $.createElement("div");
                 navDiv.setAttribute("id", "navbarNav");
-                navDiv.classList.add("collapse");
-                navDiv.classList.add("navbar-collapse");
+                navDiv.classList.add("navbar-nav-scroll");                
 
                 let navUl = $.createElement("ul");
-                navUl.classList.add("nav");
+                let navUlClass=["navbar-nav", "bd-navbar-nav", "flex-row"]
+                navUl.classList.add(...navUlClass);
                 navDiv.appendChild(navUl);
                 nav.appendChild(navDiv);
                 $.querySelector("body")?.insertBefore(nav, $.querySelector("#" + id));
