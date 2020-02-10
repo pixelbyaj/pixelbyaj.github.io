@@ -125,7 +125,7 @@ class SinglePageBeta {
             setNavigationMenu: () => {
 
                 let nav = $.createElement("nav");
-                const navClass = ["navbar", "fixed-top", "navbar-expand-lg"];
+                const navClass = ["navbar", "fixed-top", "navbar-expand-lg","navbar-dark"];
                 nav.classList.add(...navClass);
                
                 //navbrand name
