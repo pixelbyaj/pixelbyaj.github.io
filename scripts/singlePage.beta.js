@@ -105,6 +105,7 @@ var SinglePageBeta = /** @class */ (function () {
             setNavBarToggler: function () {
                 var btn = $.createElement("button");
                 btn.setAttribute("type", "button");
+                btn.classList.add("navbar-toggler");
                 btn.setAttribute("data-toggle", "collapse");
                 btn.setAttribute("data-target", "#navbarNav");
                 btn.setAttribute("aria-controls", "navbarNav");
