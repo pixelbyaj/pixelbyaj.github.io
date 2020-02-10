@@ -120,20 +120,20 @@ var SinglePageBeta = /** @class */ (function () {
                 var _a;
                 var _b;
                 var nav = $.createElement("nav");
-                var navClass = ["navbar", "fixed-top", "navbar-expand-lg","navbar-dark"];
+                var navClass = ["navbar", "fixed-top", "navbar-expand","navbar-dark","flex-column","flex-md-row","bd-navbar"];
                 (_a = nav.classList).add.apply(_a, navClass);
                 //navbrand name
                 var navBrand = htmlUtility.getBrandName(["navbar-brand", "mb-0", "h1"], _options.brandName);
                 nav.appendChild(navBrand);
                 //navbrand toggler
-                var navBarToggler = htmlUtility.setNavBarToggler();
-                nav.appendChild(navBarToggler);
+               // var navBarToggler = htmlUtility.setNavBarToggler();
+                //nav.appendChild(navBarToggler);
                 var navDiv = $.createElement("div");
                 navDiv.setAttribute("id", "navbarNav");
-                navDiv.classList.add("collapse");
-                navDiv.classList.add("navbar-collapse");
-                var navUl = $.createElement("ul");
-                navUl.classList.add("nav");
+                navDiv.classList.add("navbar-nav-scroll");                
+                var navUl = $.createElement("ul");                
+                let navUlClass=["navbar-nav", "bd-navbar-nav", "flex-row"];
+                (_a = navUl.classList).add.apply(_a, navUlClass);                
                 navDiv.appendChild(navUl);
                 nav.appendChild(navDiv);
                 (_b = $.querySelector("body")) === null || _b === void 0 ? void 0 : _b.insertBefore(nav, $.querySelector("#" + id));
