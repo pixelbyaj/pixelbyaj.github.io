@@ -30,7 +30,7 @@ Document.prototype.ready = function(fn) {
 };
 
 document.ready(function() {
-    new SinglePageBeta("singlePage", {
+    new SitePage("singlePage", {
         brandName: "PixelByAJ",
         sections: [{
                 anchor: "Home",
@@ -56,11 +56,16 @@ document.ready(function() {
                 anchor: "Achievements",
                 templateUrl: "./views/achievements.html",
                 backgroundColor: "#fec401"
+            },
+            {
+                anchor: "Contact Us",
+                template: "<h2>Contact Us</h2>",
+                backgroundColor: "#fec401"
             }
         ],
         //navigation: "horizontal|vertical",
         easing: "ease",
-        sameurl: false,
+        sameurl: true,
         transitionSpeed: 1000,
         keyboardNavigation: true,
         pageTransitionStart: (prevPage, currentPage) => {
