@@ -81,6 +81,48 @@ a:hover {
         color: rgba(255, 255, 255, .7);
         font-size: 1.5em !important;
         font-weight: 100;
-        margin: -10px 30px 10px;
+        margin: 10px;
     }
+}
+
+.sp-cell {
+    vertical-align: middle;
+}
+
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
+.list {
+    text-align: center;
+}
+
+.list li {
+    display: inline-block;
+}
+
+.list li::after {
+    content: '|';
+    padding: 0 2px 0 6px;
+}
+
+.list li:last-child::after {
+    content: '';
+    padding: 0 2px 0 6px;
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    font-size: 0.9rem;
+    width: 100%;
+    text-align: center;
+    color: #e7e9eb;
+    font-weight: 500;
+}
+
+footer u {
+    color: #ffffff;
 }

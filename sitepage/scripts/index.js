@@ -30,50 +30,39 @@ Document.prototype.ready = function(fn) {
 };
 
 document.ready(function() {
-    new SitePage("singlePage", {
-        brandName: "PixelByAJ",
+    const urlParams = new URLSearchParams(window.location.search);
+    const navigation = urlParams.get('navigation') ? urlParams.get('navigation') : 'vertical';
+    const sameurl = urlParams.get('sameurl') ? urlParams.get('sameurl') : false;
+    const autoscrolling = urlParams.get('autoscrolling') ? urlParams.get('autoscrolling') : false;
+    new SitePage("sitePage", {
+        brandName: "",
         sections: [{
                 anchor: "Home",
                 templateUrl: "./views/home.html",
-                backgroundColor: "#ff5f45"
+                backgroundColor: "#45b4f5"
             },
             {
-                anchor: "Skills",
-                templateUrl: "./views/skills.html",
-                backgroundColor: "#fec401"
-            },
-            {
-                anchor: "Projects",
-                template: "<h1>Projects</h1>",
+                anchor: "Features",
+                templateUrl: "./views/features.html",
                 backgroundColor: "#fc6c7c"
             },
             {
-                anchor: "Open Source",
-                templateUrl: "./views/opensource.html",
-                backgroundColor: "#ff5f45"
-            },
-            {
-                anchor: "Achievements",
-                templateUrl: "./views/achievements.html",
-                backgroundColor: "#fec401"
-            },
-            {
-                anchor: "Contact Us",
-                template: "<h2>Contact Us</h2>",
-                backgroundColor: "#fec401"
+                anchor: "Examples",
+                templateUrl: "./views/examples.html",
+                backgroundColor: "#1bbc9b"
             }
         ],
-        //navigation: "horizontal|vertical",
+        navigation: navigation,
         easing: "ease",
-        sameurl: true,
+        sameurl: sameurl,
         transitionSpeed: 1000,
+        autoScrolling: autoscrolling,
         keyboardNavigation: true,
         pageTransitionStart: (prevPage, currentPage) => {
             console.log(`prevPage: ${prevPage ? prevPage.id : ""} currentPage :${currentPage.id}`);
         },
         pageTransitionEnd: (currentPage) => {
             console.log(`currentPage :${currentPage.id}`);
-
         }
     });
 });
