@@ -89,6 +89,10 @@ a:hover {
     vertical-align: middle;
 }
 
+h2 {
+    font-size: 1rem !important;
+}
+
 h1,
 h2,
 h3 {
