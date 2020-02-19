@@ -85,10 +85,6 @@ a:hover {
     }
 }
 
-.sp-cell {
-    vertical-align: middle;
-}
-
 h2 {
     font-size: 1rem !important;
 }
@@ -129,4 +125,8 @@ footer {
 
 footer u {
     color: #ffffff;
+}
+
+.sectionhome {
+    background-color: #45b4f5;
 }

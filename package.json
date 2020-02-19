@@ -20,7 +20,5 @@
     "devDependencies": {
         "typescript": "^3.7.5"
     },
-    "dependencies": {
-        "sitepage.js": "^1.0.0"
-    }
+    "dependencies": {}
 }

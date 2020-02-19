@@ -34,12 +34,14 @@ document.ready(function() {
     const navigation = urlParams.get('navigation') ? urlParams.get('navigation') : 'vertical';
     const sameurl = urlParams.get('sameurl') ? urlParams.get('sameurl') : false;
     const autoscrolling = urlParams.get('autoscrolling') ? urlParams.get('autoscrolling') : false;
+    const anchors = urlParams.get('anchors') ? urlParams.get('anchors') : false;
     new SitePage("sitePage", {
         brandName: "",
+        verticalAlignMiddle: true,
         sections: [{
                 anchor: "Home",
                 templateUrl: "./views/home.html",
-                backgroundColor: "#45b4f5"
+                sectionClass: ["sectionhome"]
             },
             {
                 anchor: "Features",
@@ -52,6 +54,7 @@ document.ready(function() {
                 backgroundColor: "#1bbc9b"
             }
         ],
+        anchors: anchors,
         navigation: navigation,
         easing: "ease",
         sameurl: sameurl,
