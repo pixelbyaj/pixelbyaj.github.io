@@ -56,6 +56,11 @@ document.ready(function() {
         ],
         anchors: anchors,
         navigation: navigation,
+        hamburger: {
+            lineColor: "#fff",
+            closeOnNavigation: true,
+            //backgroundColor: ""
+        },
         easing: "ease",
         sameurl: sameurl,
         transitionSpeed: 1000,
