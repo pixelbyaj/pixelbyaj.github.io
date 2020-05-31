@@ -46,7 +46,7 @@ document.ready(function() {
             {
                 anchor: "Features",
                 templateUrl: "./views/features.html",
-                backgroundColor: "#fc6c7c"
+                backgroundColor: "#45b4f5"
             },
             {
                 anchor: "Examples",
