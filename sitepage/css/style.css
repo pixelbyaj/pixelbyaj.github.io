@@ -24,7 +24,6 @@ a:hover {
         color: rgba(255, 255, 255, .7);
         font-size: 1rem !important;
         font-weight: 100;
-        margin: -10px 30px 10px;
     }
 }
 
@@ -36,7 +35,6 @@ a:hover {
         color: rgba(255, 255, 255, .7);
         font-size: 1.2rem !important;
         font-weight: 100;
-        margin: -10px 30px 10px;
     }
 }
 
@@ -51,7 +49,6 @@ a:hover {
         color: rgba(255, 255, 255, .7);
         font-size: 1.2rem !important;
         font-weight: 100;
-        margin: -10px 30px 10px;
     }
 }
 
@@ -66,7 +63,6 @@ a:hover {
         color: rgba(255, 255, 255, .7);
         font-size: 1.5em !important;
         font-weight: 100;
-        margin: -10px 30px 10px;
     }
 }
 
@@ -81,18 +77,17 @@ a:hover {
         color: rgba(255, 255, 255, .7);
         font-size: 1.5em !important;
         font-weight: 100;
-        margin: 10px;
     }
-}
-
-h2 {
-    font-size: 1rem !important;
 }
 
 h1,
 h2,
 h3 {
     text-align: center;
+}
+
+h2 {
+    margin: 30px 0px;
 }
 
 .list {
@@ -123,10 +118,21 @@ footer {
     font-weight: 500;
 }
 
-footer u {
+footer p {
     color: #ffffff;
+    opacity: 0.5;
+    font-size: 1.2rem;
 }
 
 .sectionhome {
     background-color: #fc6c7c;
+}
+
+.sp-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1.5rem;
+    padding: 10px 25px 0 0;
+    z-index: 1000
 }
