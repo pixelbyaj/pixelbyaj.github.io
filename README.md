@@ -1,2 +1,3 @@
 # pixelbyaj.github.io
-My Profile
+Full-stack Web Developer & Photographer. 
+I can play with JavaScript & Typescript, Angular & .Net, C# & Python, and Camera.
