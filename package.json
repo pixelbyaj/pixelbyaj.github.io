@@ -8,7 +8,7 @@
     },
     "devDependencies": {},
     "scripts": {
-        "build": "echo \"Done: no build specified\" && exit 1"
+        "build": ""
     },
     "repository": {
         "type": "git",
