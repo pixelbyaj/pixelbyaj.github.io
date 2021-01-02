@@ -1,0 +1,24 @@
+{
+    "name": "pixelbyaj.github.io",
+    "version": "1.0.0",
+    "description": "PixelByAJ Profile",
+    "main": "index.js",
+    "dependencies": {
+        "typescript": "^3.7.5"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "build": "echo \"Done: no build specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/pixelbyaj/pixelbyaj.github.io.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/pixelbyaj/pixelbyaj.github.io/issues"
+    },
+    "homepage": "https://github.com/pixelbyaj/pixelbyaj.github.io#readme"
+}
