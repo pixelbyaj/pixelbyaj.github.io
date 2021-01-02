@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .section {
+            border-bottom: 1px solid salmon;
+            margin: 2px;
+            border-radius: 5px;
+        }
+        
+        .active {
+            display: inline;
+        }
+        
+        .d-active {
+            display: none;
+        }
+        
+        .list-group-item:hover {
+            cursor: pointer;
+        }
+        
+        .position-absolute {
+            width: 100%;
+            line-height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Build SitePage</a>
+    </nav>
+    <div class="container">
+        <div id="app">
+            <div class="row">
+                <div class="col-sm-3">
+                    <ul class="list-group">
+                        <li class="list-group-item active" data-id="general" v-on:click="showSection">General</li>
+                        <li class="list-group-item" data-id="navigation" v-on:click="showSection">Navigation</li>
+                        <li class="list-group-item" data-id="transition" v-on:click="showSection">Transition</li>
+                        <li class="list-group-item" data-id="menu" v-on:click="showSection">Menu</li>
+                        <li class="list-group-item" data-id="section" v-on:click="showSection">Section</li>
+                    </ul>
+                </div>
+                <div class="col-sm-7">
+                    <div class="row active" id="general">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="brandName">Brand Name</label>
+                                <input type="text" class="form-control form-control-sm" id="brandName" v-model="model.brandName" aria-describedby="brandName">
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="brandLogo">Brand Logo</label>
+                                <input type="text" :disabled="model.brandName.length>0" class="form-control form-control-sm" id="brandLogo" v-model="model.brandLogoUrl" aria-describedby="brandLogoUrl">
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="backgroundColor">Background Color</label>
+                                <input type="color" class="form-control form-control-sm" id="backgroundColor" v-model="model.backgroundColor" aria-describedby="brandName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row d-active" id="navigation">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="navigation">Navigation</label>
+                                <select class="form-control form-control-sm" id="navigation" v-model="model.navigation">
+                                    <option value="vertical" selected>Vertical</option>
+                                    <option value="horizontal">Horizontal</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="verticalAlignMiddle" v-model="model.verticalAlignMiddle" aria-describedby="verticalAlignMiddle">
+                                <label for="verticalAlignMiddle" class="form-check-label">Vertical Align Middle</label>
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="autoScrolling" v-model="model.autoScrolling" aria-describedby="autoScrolling">
+                                <label for="autoScrolling" class="form-check-label">Auto Scrolling</label>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="keyboardNavigation" v-model="model.keyboardNavigation" aria-describedby="keyboardNavigation">
+                                <label for="keyboardNavigation" class="form-check-label">Keyboard Navigation</label>
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="sameurl" v-model="model.sameurl" aria-describedby="sameurl">
+                                <label for="sameurl" class="form-check-label">Keep Same Url</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row d-active" id="transition">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="transitionSpeed">Transition Speed</label>
+                                <input type="number" class="form-control form-control-sm" id="transitionSpeed" v-model="model.transitionSpeed" aria-describedby="transitionSpeed">
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="easing">Transition Timing Function</label>
+                                <input type="text" class="form-control form-control-sm" id="easing" v-model="model.easing" aria-describedby="easingHelp">
+                                <small id="easingHelp" class="form-text text-muted">It has to be from ease-in, ease-out,
+                                    ease-in-out, cubic-bezier</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row d-active" id="menu">
+                        <div class="row">
+                            <div class="col-sm">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="anchors" v-model="model.anchors" aria-describedby="brandName">
+                                    <label for="anchors" class="form-check-label">Show Menu</label>
+                                </div>
+                                <div class="form-group form-check">
+                                    <input :disabled="!model.anchors" type="checkbox" class="form-check-input" id="anchors" v-model="model.hamburger.closeOnNavigation" aria-describedby="hamburgercloseOnNavigation">
+                                    <label for="hamburgercloseOnNavigation" class="form-check-label">Hamburger Close On
+                                        Navigation</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    <label for="MenuId">MenuId</label>
+                                    <input :disabled="!model.anchors" type="text" class="form-control form-control-sm" id="menuId" v-model="model.menuId" aria-describedby="brandName">
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    <label for="hamburgerlineColor">Hamburger Line Color</label>
+                                    <input :disabled="!model.anchors" type="color" class="form-control form-control-sm" id="hamburgerlineColor" v-model="model.hamburger.lineColor" aria-describedby="hamburgerlineColor">
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    <label for="hamburgerbackgroundColor">Hamburger BackgroundColor</label>
+                                    <input :disabled="!model.anchors" type="color" class="form-control form-control-sm" id="hamburgerbackgroundColor" v-model="model.hamburger.backgroundColor" aria-describedby="hamburgerbackgroundColor">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row d-active" id="section">
+                        <div>
+                            <input type="button" value="Add" v-on:click="addSection" class="float-left" />
+                        </div>
+                        <div class="row" v-for="(section, index, name) in model.sections">
+                            <div class="position-absolute">
+                                <input type="button" value="Remove" v-on:click="removeSection(index)" class="float-right" />
+                            </div>
+                            <div class="col-sm section">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" v-bind:id="'sectionActive_'+index" v-model="section.active">
+                                    <label for="anchors" class="form-check-label">Active Session</label>
+                                </div>
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="'verticalAlignMiddle_'+index" v-model="section.verticalAlignMiddle">
+                                    <label for="anchors" class="form-check-label">Vertical Middle Align</label>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <label for="sectionAnchor">Menu Title </label>
+                                            <input type="text" class="form-control form-control-sm" v-bind:id="'sectionAnchor_'+index" v-model="section.anchor">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <label for="sectionTemplateUrl">Template Url</label>
+                                            <input :disabled="section.template?.length>0 || section.templateId?.length>0" type="text" class="form-control form-control-sm" v-bind:id="'sectionTemplateUrl_'+index" v-model="section.templateUrl">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <label for="sectionTemplateId">Template Id</label>
+                                            <input :disabled="section.templateUrl?.length>0 || section.template?.length>0" type="text" class="form-control form-control-sm" v-bind:id="'sectionTemplateId_'+index" v-model="section.templateId">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <label for="sectionTemplateContent">Template Content</label>
+                                            <input :disabled="section.templateUrl?.length>0 || section.templateId?.length>0" type="text" class="form-control form-control-sm" v-bind:id="'sectionTemplateContent_'+index" v-model="section.template">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <label for="sectionTemplateContent">Background Color</label>
+                                            <input type="color" class="form-control form-control-sm" v-bind:id="'sectionTemplateColor_'+index" v-model="section.backgroundColor">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <label for="sectionTemplateContent">Section CSS Classes</label>
+                                            <input type="text" class="form-control form-control-sm" v-bind:id="'sectionTemplateClasses_'+index" v-model="section.sectionClass">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                model: {
+                    brandName: "DEMO",
+                    brandLogoUrl: "",
+                    backgroundColor: "#ffffff",
+                    anchors: false,
+                    navigation: "vertical",
+                    verticalAlignMiddle: true, //true||false
+                    sections: [{
+                        anchor: "Home",
+                        //anchorClass: [],
+                        templateId: "home-template",
+                        backgroundColor: "#ff5f45",
+                        verticalAlignMiddle: true, //true||false
+                        sectionClass: 'text-right'
+                    }, {
+                        anchor: "Contact Us",
+                        template: "<h5>Contact Us</h5>",
+                        backgroundColor: "#fec401"
+                    }],
+                    //navigation: "horizontal|vertical",
+                    anchors: true, //default true
+                    hamburger: {
+                        lineColor: "#fff",
+                        //closeOnNavigation: false,
+                        //backgroundColor: ""
+                    },
+                    easing: "ease",
+                    sameurl: false,
+                    //sameurl: true|false,
+                    transitionSpeed: 1000,
+                    keyboardNavigation: true,
+                }
+            },
+            methods: {
+                showSection: function(event) {
+                    document.querySelector(".active").classList.toggle("active");
+                    event.target.classList.toggle("active");
+                    var section = event.target.getAttribute("data-id");
+                    var ele = document.getElementById(section);
+                    var otherEle = document.querySelector(".row.active");
+                    otherEle.classList.remove("active");
+                    otherEle.classList.add("d-active");
+                    ele.classList.add('active');
+                    ele.classList.remove('d-active');
+                },
+                addSection: function() {
+                    this.model.sections.push({
+                        active: false,
+                        anchor: 'Menu Name',
+                        template: 'Enter template text or templateId or templateUrl',
+                        backgroundColor: "#ffffff",
+                        verticalAlignMiddle: true,
+                    });
+                },
+                removeSection: function(index) {
+                    debugger;
+                    this.model.sections.splice(index, 1);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
