@@ -205,3 +205,12 @@ h3 {
     padding: 10px 25px 0 0;
     z-index: 1000
 }
+
+.underline {
+    color: #d1be16;
+}
+
+.underline:hover {
+    color: #d1be16;
+    text-decoration: underline;
+}
