@@ -34,7 +34,7 @@ document.ready(function() {
         verticalAlignMiddle: true,
         sections: [{
             anchor: "Home",
-            templateUrl: "../app/views/home.html",
+            templateUrl: "views/home.html",
             sectionClass: ["sectionhome"]
         }],
         anchors: false,
