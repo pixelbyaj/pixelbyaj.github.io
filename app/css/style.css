@@ -176,22 +176,6 @@ a:hover::after {
     transform-origin: left;
 }
 
-footer {
-    position: absolute;
-    bottom: 10px;
-    font-size: 0.9rem;
-    width: 100%;
-    text-align: center;
-    color: #e7e9eb;
-    font-weight: 500;
-}
-
-.footer-by {
-    font-size: .9em;
-    margin: 10px 0 50px 0;
-    color: #7e8890;
-}
-
 .sectionhome {
     background-color: #fff;
 }
@@ -223,4 +207,20 @@ footer {
     font-size: 2rem;
     padding: 0 4px;
     color: #ccc
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    font-size: 0.9rem;
+    width: 100%;
+    text-align: center;
+    color: #e7e9eb;
+    font-weight: 500;
+}
+
+.footer-by {
+    font-size: 1rem;
+    margin: 10px 0 50px 0;
+    color: #7e8890;
 }
