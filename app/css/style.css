@@ -22,6 +22,10 @@ footer p {
     color: #7e8890;
 }
 
+.social {
+    color: #ccc
+}
+
 
 /* Small devices (landscape phones, 576px and up) */
 
@@ -36,7 +40,6 @@ footer p {
     .social {
         font-size: 2rem !important;
         padding: 0 4px;
-        color: #ccc
     }
 }
 
@@ -51,7 +54,6 @@ footer p {
     .social {
         font-size: 2rem !important;
         padding: 0 4px;
-        color: #ccc
     }
 }
 
@@ -108,7 +110,6 @@ footer p {
     .social {
         font-size: 3rem !important;
         padding: 0 4px;
-        color: #ccc
     }
 }
 
@@ -222,15 +223,6 @@ a:hover::after {
 
 .sectionhome {
     background-color: #fff;
-}
-
-.sp-icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-    font-size: 1.5rem;
-    padding: 10px 25px 0 0;
-    z-index: 1000
 }
 
 .project {
