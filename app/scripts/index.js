@@ -30,15 +30,18 @@ Document.prototype.ready = function(fn) {
 };
 
 document.ready(function() {
-    new SitePage("pixelbyaj", {
-        verticalAlignMiddle: true,
-        sections: [{
-            anchor: "Home",
-            templateUrl: "views/home.html",
-            sectionClass: ["sectionhome"]
-        }],
-        anchors: false,
-        easing: "ease",
-        transitionSpeed: 1000
-    });
+    setTimeout(() => {
+        new SitePage("pixelbyaj", {
+            verticalAlignMiddle: true,
+            sections: [{
+                anchor: "Home",
+                templateUrl: "views/home.html",
+                sectionClass: ["sectionhome"]
+            }],
+            anchors: false,
+            easing: "ease",
+            transitionSpeed: 1000
+        });
+    }, 500)
+
 });
