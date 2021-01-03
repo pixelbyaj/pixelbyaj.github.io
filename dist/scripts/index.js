@@ -42,3 +42,4 @@ document.ready(function() {
         transitionSpeed: 1000
     });
 });
+window.location = "https://www.pixelbyaj.com";
