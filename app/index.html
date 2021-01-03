@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="apple-mobile-web-app-status-bar" content="#aa7700">
+    <!-- Manifest File link -->
+    <link rel="manifest" href="manifest.json">
     <meta name="author" content="Abhishek Joshi" />
     <meta name="description" content="Abhishek Joshi porfolio. Here you can take a look at some of my works on web programming and design." />
     <meta name="keywords" content="abhishek,joshi,pixelbyaj,portfolio,blog,website,sitepage,jquery,plugin,fullscren,screen,full,developer" />
@@ -39,12 +42,29 @@
     </div>
     <canvas style="display: none" id="loader" width="16" height="16"></canvas>
     <!-- Place this tag in your head or just before your close body tag. -->
+
     <script src="scripts/index.js"></script>
     <script src="scripts/favicon.js"></script>
 
-    <div class="sp-icon">
+    <script>
+        window.addEventListener('load', () => {
+            registerSW();
+        });
 
-    </div>
+        // Register the Service Worker 
+        async function registerSW() {
+            if ('serviceWorker' in navigator) {
+                try {
+                    await navigator
+                        .serviceWorker
+                        .register('serviceworker.js');
+                } catch (e) {
+                    console.log('SW registration failed');
+                }
+            }
+        }
+    </script>
+
     <footer>
         <p class="text-center">
             <a href="https://www.github.com/pixelbyaj" target="_blank" title="GitHub"><i class="fa fa-github social"></i></a>
