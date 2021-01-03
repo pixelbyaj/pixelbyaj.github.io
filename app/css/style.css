@@ -186,10 +186,10 @@ footer {
     font-weight: 500;
 }
 
-footer p {
-    color: #ffffff;
-    opacity: 0.5;
-    font-size: 1.2rem;
+.footer-by {
+    font-size: .9em;
+    margin: 10px 0 50px 0;
+    color: #7e8890;
 }
 
 .sectionhome {
@@ -220,5 +220,7 @@ footer p {
 }
 
 .social {
+    font-size: 2rem;
+    padding: 0 4px;
     color: #ccc
 }
