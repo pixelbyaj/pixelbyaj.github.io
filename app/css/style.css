@@ -12,6 +12,16 @@ h2 {
     font-size: 1rem !important;
 }
 
+footer p {
+    margin: 0 0 5px 0;
+}
+
+.footer-by {
+    font-size: 1rem;
+    margin: 10px 0 50px 0;
+    color: #7e8890;
+}
+
 
 /* Small devices (landscape phones, 576px and up) */
 
@@ -20,8 +30,28 @@ h2 {
         font-size: 1rem !important;
         font-weight: 100;
     }
-    img {
-        width: 20rem;
+    p {
+        margin: 0 !important;
+    }
+    .social {
+        font-size: 2rem !important;
+        padding: 0 4px;
+        color: #ccc
+    }
+}
+
+@media (min-width: 320px) {
+    h2 {
+        font-size: 1rem !important;
+        font-weight: 100;
+    }
+    p {
+        margin: 0 !important;
+    }
+    .social {
+        font-size: 2rem !important;
+        padding: 0 4px;
+        color: #ccc
     }
 }
 
@@ -66,6 +96,19 @@ h2 {
     h2 {
         font-size: 1rem !important;
         font-weight: 100;
+    }
+    footer p {
+        margin: 0 0 5px 0 !important;
+    }
+    .footer-by {
+        font-size: 1.2rem;
+        margin: 10px 0 50px 0 !important;
+        color: #7e8890;
+    }
+    .social {
+        font-size: 3rem !important;
+        padding: 0 4px;
+        color: #ccc
     }
 }
 
@@ -204,12 +247,6 @@ a:hover::after {
     font-size: .9em;
 }
 
-.social {
-    font-size: 2rem;
-    padding: 0 4px;
-    color: #ccc
-}
-
 footer {
     position: absolute;
     bottom: 10px;
@@ -218,10 +255,4 @@ footer {
     text-align: center;
     color: #e7e9eb;
     font-weight: 500;
-}
-
-.footer-by {
-    font-size: 1rem;
-    margin: 10px 0 50px 0;
-    color: #7e8890;
 }
