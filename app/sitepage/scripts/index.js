@@ -49,12 +49,17 @@ document.ready(function() {
                 backgroundColor: "#45b4f5"
             },
             {
+                anchor: "Compatible",
+                templateUrl: "./views/compatible.html",
+                backgroundColor: "#ff5f45"
+            },
+            {
                 anchor: "Examples",
                 templateUrl: "./views/examples.html",
-                backgroundColor: "#1bbc9b"
+                backgroundColor: "#fec401"
             }
         ],
-        anchors: anchors,
+        anchors: false,
         navigation: navigation,
         hamburger: {
             lineColor: "#fff",

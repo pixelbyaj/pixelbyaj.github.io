@@ -13,17 +13,58 @@ a:hover {
     text-decoration: none;
 }
 
+.social {
+    padding: 0 5px;
+}
+
+.compatible {
+    color: rgba(255, 255, 255, .5)
+}
+
+h2 {
+    color: rgba(255, 255, 255, .9);
+    font-weight: 100;
+}
+
 
 /* Small devices (landscape phones, 576px and up) */
 
-@media (min-width: 400px) {
+@media (min-width: 320px) {
     h1 {
-        font-size: 4em;
+        font-size: 3em;
     }
     h2 {
-        color: rgba(255, 255, 255, .7);
-        font-size: 1rem !important;
-        font-weight: 100;
+        font-size: 1.2rem !important;
+    }
+    .social {
+        font-size: 2rem;
+    }
+    footer p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 375px) {
+    h1 {
+        font-size: 3em;
+    }
+    h2 {
+        font-size: 1.3rem !important;
+    }
+    .social {
+        font-size: 2.8rem;
+    }
+}
+
+@media (min-width: 411px) {
+    h1 {
+        font-size: 3em;
+    }
+    h2 {
+        font-size: 1.3rem !important;
+    }
+    .social {
+        font-size: 2.8rem;
     }
 }
 
@@ -32,9 +73,7 @@ a:hover {
         font-size: 4em;
     }
     h2 {
-        color: rgba(255, 255, 255, .7);
         font-size: 1.2rem !important;
-        font-weight: 100;
     }
 }
 
@@ -46,9 +85,13 @@ a:hover {
         font-size: 4em;
     }
     h2 {
-        color: rgba(255, 255, 255, .7);
-        font-size: 1.2rem !important;
-        font-weight: 100;
+        font-size: 2rem !important;
+    }
+    .social {
+        font-size: 4rem;
+    }
+    footer p {
+        font-size: 2rem;
     }
 }
 
@@ -57,12 +100,13 @@ a:hover {
 
 @media (min-width: 992px) {
     h1 {
-        font-size: 8em;
+        font-size: 8rem;
     }
     h2 {
-        color: rgba(255, 255, 255, .7);
-        font-size: 1.5em !important;
-        font-weight: 100;
+        font-size: 2.5rem !important;
+    }
+    .social {
+        font-size: 5rem;
     }
 }
 
@@ -74,9 +118,13 @@ a:hover {
         font-size: 8em;
     }
     h2 {
-        color: rgba(255, 255, 255, .7);
         font-size: 1.5em !important;
-        font-weight: 100;
+    }
+    .social {
+        font-size: 3rem;
+    }
+    footer p {
+        font-size: 1.2rem;
     }
 }
 
@@ -111,7 +159,6 @@ h2 {
 footer {
     position: absolute;
     bottom: 10px;
-    font-size: 0.9rem;
     width: 100%;
     text-align: center;
     color: #e7e9eb;
@@ -120,8 +167,7 @@ footer {
 
 footer p {
     color: #ffffff;
-    opacity: 0.5;
-    font-size: 1.2rem;
+    opacity: 0.8;
 }
 
 .sectionhome {
