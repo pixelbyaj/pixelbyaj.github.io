@@ -1,11 +1,12 @@
 {
     "name": "PixélByÁJ",
     "short_name": "PixélByÁJ",
-    "start_url": "index.html",
+    "description": "Abhishek Joshi aka PixelByAJ porfolio",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
-    "scope": ".",
-    "description": "Abhishek Joshi porfolio",
+    "theme_color": "#ffffff",
+    "homepage_url": "https://www.pixelbyaj.com",
     "icons": [{
             "src": "images/windows10/Square71x71Logo.scale-400.png",
             "sizes": "284x284"
