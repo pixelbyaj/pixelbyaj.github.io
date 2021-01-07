@@ -8,17 +8,17 @@
     "theme_color": "#ffffff",
     "homepage_url": "https://www.pixelbyaj.com",
     "icons": [{
-        "src": "images/pixelbyaj-192-192.png",
+        "src": "images/pixelbyajlogo-192-192.png",
         "sizes": "192x192",
         "type": "image/png",
         "purpose": "any maskable"
     }, {
-        "src": "images/pixelbyaj-128-128.png",
+        "src": "images/pixelbyajlogo-128-128.png",
         "sizes": "128x128",
         "type": "image/png",
         "purpose": "any maskable"
     }, {
-        "src": "images/pixelbyaj-512-512.png",
+        "src": "images/pixelbyajlogo-512-512.png",
         "sizes": "512x512",
         "type": "image/png",
         "purpose": "any maskable"
