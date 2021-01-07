@@ -70,12 +70,6 @@ document.ready(function() {
         sameurl: sameurl,
         transitionSpeed: 1000,
         autoScrolling: autoscrolling,
-        keyboardNavigation: true,
-        pageTransitionStart: (prevPage, currentPage) => {
-            console.log(`prevPage: ${prevPage ? prevPage.id : ""} currentPage :${currentPage.id}`);
-        },
-        pageTransitionEnd: (currentPage) => {
-            console.log(`currentPage :${currentPage.id}`);
-        }
+        keyboardNavigation: true
     });
 });
