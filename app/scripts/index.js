@@ -34,8 +34,8 @@ document.ready(function() {
         new SitePage("pixelbyaj", {
             verticalAlignMiddle: true,
             sections: [{
-                anchor: "Home",
-                templateUrl: "views/home.html",
+                anchor: "About",
+                templateUrl: "views/about.html",
                 sectionClass: ["sectionhome"]
             }],
             anchors: false,
