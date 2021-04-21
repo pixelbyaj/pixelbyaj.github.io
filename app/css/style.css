@@ -26,6 +26,13 @@ footer p {
     color: #ccc
 }
 
+.playarea {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    z-index: 1000;
+}
+
 
 /* Small devices (landscape phones, 576px and up) */
 
