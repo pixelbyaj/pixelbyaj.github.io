@@ -1,9 +1,6 @@
 (() => {
-    const alphabet = document.getElementById("alphabet");
-    alphabet.value = "";
-    alphabet.focus();
+    const alphabet = document.getElementById("alphabets");
     let code = 0;
-
     const alphaCheck = (e) => {
         return !((e.which >= 65 && e.which <= 90 || e.which >= 97 && e.which <= 122) || e.which === 13 || e.key.length === 1);
     }
@@ -33,5 +30,5 @@
             addRandomColor(e.target);
         }
     }, false);
-
+    alphabet.focus();
 })();
