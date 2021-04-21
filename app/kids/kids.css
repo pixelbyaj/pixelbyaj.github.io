@@ -1,15 +1,17 @@
 body {
-    margin: 0 500px;
     background-color: #fc6c7c;
 }
 
 section {
     font-family: arial, helvetica;
-    font-size: 8.5rem;
-    width: 500px;
-    text-align: center;
+    font-size: 8rem;
+    width: 300px;
+    height: 300px;
     margin: 0 5px;
     color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 section {
