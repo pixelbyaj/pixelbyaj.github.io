@@ -1,8 +1,11 @@
 (() => {
-    const alphabet = document.getElementById("alphabets");
+    const alphabet = document.getElementById("alphanumeric");
     let code = 0;
     const alphaCheck = (e) => {
         return !((e.which >= 65 && e.which <= 90 || e.which >= 97 && e.which <= 122));
+    }
+    const numberCheck = (e) => {
+        return !((e.which >= 48 && e.which <= 57) || e.which === 32);
     }
     const getRandomNumber = (min, max) => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -16,17 +19,14 @@
     }
 
     alphabet.addEventListener("keypress", (e) => {
-        if (alphaCheck(e)) {
+        if (alphaCheck(e) && numberCheck(e)) {
             e.preventDefault();
         } else {
-            if (e.which <= 90) {
+            /*if (e.which >= 65 && e.which <= 90) {
                 e.target.value += `${e.key.toLocaleLowerCase()}`;
-            } else {
+            } else if (e.which >= 97 && e.which <= 122) {
                 e.target.value += `${e.key.toLocaleUpperCase()}`;
-            }
-            setTimeout(() => {
-                e.target.value += " ";
-            })
+            }*/
             addRandomColor(e.target);
         }
     }, false);
