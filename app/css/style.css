@@ -99,7 +99,7 @@ footer p {
 
 @media (min-width: 667px) {
     h1 {
-        font-size: 2rem !important;
+        font-size: 3rem !important;
         font-weight: 100;
     }
     h2 {
@@ -254,4 +254,8 @@ footer {
     text-align: center;
     color: #e7e9eb;
     font-weight: 500;
+}
+.aka{
+    padding-top: 8px;
+    font-size: 12px;
 }
