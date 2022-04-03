@@ -59,13 +59,7 @@ document.ready(function() {
                 backgroundColor: "#fec401"
             }
         ],
-        anchors: false,
         navigation: navigation,
-        hamburger: {
-            lineColor: "#fff",
-            closeOnNavigation: true,
-            //backgroundColor: ""
-        },
         easing: "ease",
         sameurl: sameurl,
         transitionSpeed: 1000,
