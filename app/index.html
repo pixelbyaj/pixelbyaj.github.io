@@ -20,13 +20,17 @@
     <link rel="apple-touch-icon" sizes="180x180" href="images/pixelbyajlogo-512-512.png">
     <link rel="apple-touch-icon" sizes="167x167" href="images/pixelbyajlogo-512-512.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sitepage.js@3.1.1/dist/style/sitepage.min.css" />
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sitepage.js@3.1.1/dist/sitepage.min.js"></script>
     <link href="css/style.css" rel="stylesheet" />
     <title>Abhishek Joshi (PixelByAJ) - Full-Stack Web Developer & Photographer</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-2D0WSM4G52"></script>
+    <script type="text/javascript" src="./vendor//jquery/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="./vendor/knockoutjs/knockout-min.js"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -38,11 +42,222 @@
         gtag('config', 'G-2D0WSM4G52');
     </script>
 </head>
-
 <body>
-    <div id="pixelbyaj">
+    <div class="container-fluid" id="gitcv">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-xs-3 col-lg-3 d-md-block sidebar collapse bg-sec text-center pt-4 header">
+                <img data-bind="attr:{src: resume().basics.picture}" alt="..." class="img-thumbnail rounded-circle">
+                <div class="white-space-10"></div>
+                <div class="header-titles">
+                    <h2 data-bind="text: resume().basics.name"></h2>
+                    <h4 data-bind="text: resume().basics.label"></h4>
+                </div>
+                <div class="white-space-10"></div>
 
+                <div class="contact-info">
+
+                    <ul class="info-list" data-bind="foreach: contacts">
+                        <li>
+                            <i data-bind="class: icon"></i>
+                            <span data-bind="text: text"></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="social-links">
+                    <ul data-bind="foreach: profiles">
+                        <li><a data-bind="attr:{href: url}" target="_blank"><i
+                                    data-bind="class: 'fa fa-' + network.toLowerCase()"></i></a></li>
+                    </ul>
+                </div>
+                <div class="copyrights">&copy; 2022 All rights reserved.</div>
+
+                <!-- <div class="copyrights">© 2020 All rights reserved.</div> -->
+            </nav>
+            <main class="col-md-9 ml-sm-auto col-lg-9 px-md-5 bg-semi-dark">
+                <div id="pixelbyaj">
+
+                </div>
+            </main>
+        </div>
     </div>
+    <template id="aboutme">
+        <div class="page-title">
+            <h2><i class="fa fa-user"></i> About Me</h2>
+        </div>
+        <div class="section-content">
+            <!-- Personal Information -->
+            <div class="row">
+                <div class="col-xs-12 col-sm-12">
+                    <p data-bind="text: resume().basics.summary"></p>
+                </div>
+            </div>
+            <!-- End of Personal Information -->
+
+            <div class="white-space-50"></div>
+
+        </div>
+        <!-- End of Skill Information-->
+    </template>
+    <template id="skills">
+        <!-- Skill Information -->
+        <div class="page-title">
+            <h2><i class="fa fa-tasks"></i> Skills</h2>
+        </div>
+        <div class="section-content autoscroll">
+            <div class="row">
+                <div class="col-xs-12 col-sm-9">
+                    <div class="skills-info skills-second-style" data-bind="foreach: skills">
+                        <div class="skill clearfix">
+                            <h4 data-bind="text: name"></h4>
+                        </div>
+                        <div data-bind="foreach: keywords">
+                            <span class="badge badge-light" data-bind="text: $data"></span>
+                        </div>
+                        <div class="white-space-10"></div>
+                        <div class="skill-container skill">
+                            <div data-bind="class: 'skill-percentage skill-'+ level.toLowerCase()"></div>
+                        </div>
+
+                    </div>
+                    <div class="white-space-10"></div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="education">
+        <div class="page-title">
+            <h2><i class="fa fa-graduation-cap"></i> Education</h2>
+        </div>
+
+        <div class="section-content autoscroll">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12">
+                    <!-- Education Start -->
+                    <div class="timeline timeline-second-style clearfix" data-bind="foreach: education">
+
+                        <div class="timeline-item clearfix">
+                            <div class="left-part">
+                                <h5 class="item-period"><span data-bind="text: startDate"></span> - <span
+                                        data-bind="text: endDate"></span></h5>
+                                <span class="item-company" data-bind="text: institution"></span>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="right-part">
+                                <h4 class="item-title"><span data-bind="text: studyType"></span> (<span
+                                        data-bind="text: area"></span>)</h4>
+                                <p>GPA: <i data-bind="text: $root.getData($data,'gpa')"></i></p>
+                                <p data-bind="if:$root.ifExist($data,'courses',[])">
+                                <section data-bind="foreach: courses">
+                                    <span class="badge badge-light" data-bind="text: $data"></span>
+                                </section>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white-space-50"></div>
+                    <!-- Education End -->
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="experience">
+        <section data-id="resume">
+            <div class="page-title">
+                <h2><i class="fa fa-briefcase"></i> Experience</h2>
+            </div>
+            <div class="section-content autoscroll">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12">
+                        <div class="timeline timeline-second-style clearfix" data-bind="foreach: work">
+
+                            <div class="timeline-item clearfix">
+                                <div class="left-part">
+                                    <h5 class="item-period"><span data-bind="text: companyDate"></h5>
+                                    <span class="item-company" data-bind="text: company"></span>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="right-part highlights">
+                                    <h4 class="item-title" data-bind="text: position"></h4>
+                                    <p data-bind="text: summary"></p>
+                                    <ul data-bind="foreach: highlights">
+                                        <li data-bind="text: $data"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </template>
+    <template id="awards" data-bind="if: isAwards">
+        <div class="page-title">
+            <h2><i class="fa fa-trophy"></i> Awards <span></h2>
+        </div>
+        <div class="section-content autoscroll">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12">
+                    <!-- Awards Start -->
+                    <div class="timeline timeline-second-style clearfix" data-bind="foreach: awards">
+
+                        <div class="timeline-item clearfix">
+                            <div class="left-part">
+                                <h5 class="item-period"><span data-bind="text: $root.getData($data,'date')"></span>
+                                </h5>
+                                <span class="item-company" data-bind="text: awarder"></span>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="right-part">
+                                <h4 class="item-title"><span data-bind="text: title"></span></h4>
+                                <p data-bind="text: $root.getData($data,'summary')"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Awards End -->
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="misc" data-bind="if: (isVol || isPub)">
+        <div class="page-title">
+            <h2>Publications</h2>
+        </div>
+        <div class="section-content autoscroll">
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- Publications Start -->
+
+                    <div class="block-title">
+                        <h3><i class="fa fa-newspaper-o"></i> Publications</h3>
+                    </div>
+                    <div data-bind="ifnot: isPub">
+                        <div class="block-title">
+                            Not Available
+                        </div>
+                    </div>
+                    <div class="timeline timeline-second-style clearfix" data-bind="if: isPub">
+                        <div data-bind="foreach: publications">
+                            <div class="timeline-item clearfix">
+                                <div class="left-part">
+                                    <h5 class="item-period"><span data-bind="text: releaseDate"></span></h5>
+                                    <span class="item-company" data-bind="text: publisher"></span>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="right-part">
+                                    <h4 class="item-title"><a data-bind="text: name, attr: {href: website}"></a>
+                                    </h4>
+                                    <p data-bind="text: summary"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Publications End -->
+                    <div class="white-space-10"></div>
+                </div>
+            </div>
+        </div>
+    </template>
     <!-- <canvas style="display: none" id="loader" width="16" height="16"></canvas> -->
     <!-- Place this tag in your head or just before your close body tag. -->
 
@@ -67,19 +282,6 @@
             }
         }
     </script>
-    
-    <div class="top-social">
-        <a href="mail:pixelbyaj@gmail.com" target="_blank" title="E-Mail" class="social">
-            <i class="fa fa-envelope"></i>
-        </a>
-    </div>
-    <footer>
-        <p class="text-center">
-            <a class="social" href="https://www.github.com/pixelbyaj" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
-            <a class="social" href="https://www.linkedin.com/in/pixelbyaj" target="_blank" title="LinkedIn"><i class="fa fa-linkedin-square"></i></a>
-            <a class="social" href="https://www.twitter.com/pixelbyaj" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
-        </p>
-    </footer>
 </body>
 
 </html>
