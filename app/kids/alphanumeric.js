@@ -32,3 +32,13 @@
     }, false);
     alphabet.focus();
 })();
+let fontSize = 7;
+function onClick(val){
+    const alphabet = document.getElementById("alphanumeric");
+    if(val){
+        fontSize++;
+    }else{
+        fontSize--;
+    }
+    alphabet.style.fontSize = `${fontSize}rem`; 
+}
