@@ -10,12 +10,18 @@
     <link rel="shortcut icon" type="image/x-icon" href="../favicon/favicon.ico">
 
     <style>
-
+.btn{
+    height: 50px;
+    width: 50px;
+    margin: 0 2px;
+    font-size: 20px;
+}
     </style>
 </head>
 
 <body>
-    <h1>Alphabet/Number</h1> <button onclick="onClick(true)">+</button><button onclick="onClick(false)">-</button>
+    <button onclick="onClick(true)" class="btn">+</button><button onclick="onClick(false)" class="btn">-</button>
+    <input type="color" id="color" onchange="watchColorPicker(this)"/>
     <section>
         <textarea id="alphanumeric" spellcheck="false" title="alphanumeric"></textarea>
     </section>

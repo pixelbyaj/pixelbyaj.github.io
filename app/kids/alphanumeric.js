@@ -17,19 +17,6 @@
         var b = getRandomNumber(0, 255);
         ele.style.color = `rgb(${r},${g},${b})`;
     }
-
-    alphabet.addEventListener("keypress", (e) => {
-        if (alphaCheck(e) && numberCheck(e)) {
-            e.preventDefault();
-        } else {
-            /*if (e.which >= 65 && e.which <= 90) {
-                e.target.value += `${e.key.toLocaleLowerCase()}`;
-            } else if (e.which >= 97 && e.which <= 122) {
-                e.target.value += `${e.key.toLocaleUpperCase()}`;
-            }*/
-            addRandomColor(e.target);
-        }
-    }, false);
     alphabet.focus();
 })();
 let fontSize = 7;
@@ -41,4 +28,9 @@ function onClick(val){
         fontSize--;
     }
     alphabet.style.fontSize = `${fontSize}rem`; 
+}
+
+function watchColorPicker(e){
+    const alphabet = document.getElementById("alphanumeric");
+    alphabet.style.color = e.value;
 }
