@@ -132,6 +132,9 @@ footer{
     text-align: center;
     width: 100%;
 }
+footer p{
+    margin: 0px;
+}
 footer a{
    color:#fff;
    font-size:1.5em;
