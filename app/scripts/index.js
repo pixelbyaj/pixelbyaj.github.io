@@ -1,5 +1,5 @@
-Document.prototype.ready = function(fn) {
-    var readyFunc = function(resolve, reject) {
+Document.prototype.ready = function (fn) {
+    var readyFunc = function (resolve, reject) {
         // The ready event handler and self cleanup method
         function completed() {
             document.removeEventListener("DOMContentLoaded", completed);
@@ -23,25 +23,50 @@ Document.prototype.ready = function(fn) {
     var promise = new Promise(readyFunc);
     promise
         .then(fn)
-        .catch(function(error) {
+        .catch(function (error) {
             throw error;
         });
     return promise;
 };
 
-document.ready(function() {
+document.ready(function () {
     setTimeout(() => {
         new SitePage("pixelbyaj", {
             verticalAlignMiddle: true,
+            backgroundColor: "#0a192f",
             sections: [{
                 anchor: "About",
-                templateUrl: "views/about.html",
-                sectionClass: ["sectionhome"]
-            }],
+                templateUrl: "views/about.html"
+            },
+            {
+                anchor: "Where I've Worked",
+                templateUrl: "views/experience.html"
+            },
+            {
+                anchor: "Something I've Built",
+                templateUrl: "views/projects.html"
+            },
+            {
+                anchor: "Get In Touch",
+                templateUrl: "views/contact.html"
+            }
+            ],
             anchors: false,
             easing: "ease",
             transitionSpeed: 1000
         });
-    }, 500)
-
+    }, 500);
+    $(document).on("click", ".sp-tab li", (el) => {
+        var parentHide= $(".sp-tab .active").removeClass("active");
+        var ele = $(el.target);
+        ele.addClass("active");
+        $(".sp-tab-details .active").removeClass("active").removeClass("show").addClass("hide");
+        var relEle = ele.data("extend");
+        $("#"+relEle).addClass("show active").removeClass("hide");
+        
+    });
 });
+
+function clickTab() {
+
+}
