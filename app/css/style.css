@@ -60,10 +60,10 @@ a:hover {
     background-color:rgb(35,53,84,0.5);
     cursor: pointer;
 }
-.sp-tab-bar .sp-tab-details{
+.sp-tab-details{
     height: 300px;
 }
-.sp-tab-bar .sp-tab-details .sp-tab-title{
+.sp-tab-details .sp-tab-title{
     font-size: 1.2em;
     color: #ccd6f6;
 }
@@ -140,4 +140,8 @@ footer a{
    font-size:1.5em;
    font-weight: 100;
    padding: 0 5px;
+}
+
+.carousel-indicators{
+    bottom:-50px;
 }

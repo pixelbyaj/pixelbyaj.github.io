@@ -28,7 +28,8 @@ Document.prototype.ready = function (fn) {
         });
     return promise;
 };
-
+let expCarousel;
+let projCarousel;
 document.ready(function () {
     setTimeout(() => {
         new SitePage("pixelbyaj", {
@@ -53,20 +54,29 @@ document.ready(function () {
             ],
             anchors: false,
             easing: "ease",
-            transitionSpeed: 1000
+            transitionSpeed: 1000,
+            pageTransitionEnd: (currentPage) => {
+                console.log(`currentPage :${currentPage.id}`);
+                const exp = $("#experience");
+                if(exp.length>0 && expCarousel === undefined){
+                    expCarousel = exp.find(".carousel");
+                    expCarousel.carousel({
+                        interval: 5000,
+                        wrap:true
+                      });
+                }else{
+                    const pro = $("#projects");
+                    if(pro.length>0 && projCarousel === undefined){
+                        projCarousel = pro.find(".carousel");
+                        projCarousel.carousel({
+                            interval: 5000,
+                            wrap:true
+                          });
+                    }
+                    
+                }
+            }
         });
     }, 500);
-    $(document).on("click", ".sp-tab li", (el) => {
-        var parentHide= $(".sp-tab .active").removeClass("active");
-        var ele = $(el.target);
-        ele.addClass("active");
-        $(".sp-tab-details .active").removeClass("active").removeClass("show").addClass("hide");
-        var relEle = ele.data("extend");
-        $("#"+relEle).addClass("show active").removeClass("hide");
-        
-    });
+    
 });
-
-function clickTab() {
-
-}
