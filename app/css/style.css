@@ -41,22 +41,22 @@ a:hover {
 .sp-tab-bar{
     padding:10px 0;
 }
-.sp-tab-bar ul {
+ul {
     list-style: none;
 }
-.sp-tab-bar ul.sp-tab li {
+ul.sp-tab li {
     padding: 10px;
     border-left: 2px solid #495670;
 }
-.sp-tab-bar ul.sp-tab li {
+ul.sp-tab li {
     font-size: .8em;
 }
-.sp-tab-bar ul.sp-tab li.active {
+ul.sp-tab li.active {
     background-color:#233554;
     border-left: 2px solid #64ffda;
     color:#64ffda
 }
-.sp-tab-bar ul.sp-tab li:hover,.sp-tab-bar ul.sp-tab li:focus {
+ul.sp-tab li:hover,ul.sp-tab li:focus {
     background-color:rgb(35,53,84,0.5);
     cursor: pointer;
 }
@@ -67,24 +67,25 @@ a:hover {
     font-size: 1.2em;
     color: #ccd6f6;
 }
-.sp-tab-bar .sp-tab-details .sp-tab-sub-title{
+.sp-tab-details .sp-tab-sub-title{
     font-size:.7em;
     color: #ccd6f6
 }
-.sp-tab-bar .sp-tab-details .details{
-    padding-top: 10px;
+.sp-tab-details .details{
+    overflow: auto;
+    height: 300px;
 }
 
-.sp-tab-bar .sp-tab-details .details ol{
+.sp-tab-details .details ol{
     list-style-type: disc;
     list-style-position: outside;
     margin-left: -23px;
 }
-.sp-tab-bar .sp-tab-details .details ol li{
+.sp-tab-details .details ol li{
     font-size: 0.9em;
     padding: 5px 0;
 }
-.sp-tab-bar ul.sp-tab-details li{
+ul.sp-tab-details li{
     display: none;
 }
 .card{
