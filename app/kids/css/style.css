@@ -51,7 +51,9 @@ html,
 .d-flex {
     display: flex !important;
 }
-
+hr{
+    margin: 5px !important;
+}
 main {
     height: calc(100vh);
     max-height: 100vh;
