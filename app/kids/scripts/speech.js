@@ -11,7 +11,7 @@ if ("speechSynthesis" in window) {
     speak = (text) => {
         let msg = new SpeechSynthesisUtterance();
         msg.voice = speechSynthesis.getVoices()[voice];
-        msg.rate = "0.4";
+        msg.rate = "0.6";
         msg.text = text;
         speechSynthesis.speak(msg);
         return false;
