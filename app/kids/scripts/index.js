@@ -63,11 +63,16 @@ $(function () {
     });
 
     $("#play").on('click', () => {
-        let _this='';
+        let _this={};
         $(".new_drag").each(function () {
-             _this += $(this).text();
+            _this[$(this).offset().left]=$(this).text();
         });
-        speak(_this);
+        
+        let text='';
+        Object.keys(_this).forEach((item)=>{
+            text +=_this[item];
+        });
+        speak(text);
     });
 
     $("#sort").on('click', () => {
