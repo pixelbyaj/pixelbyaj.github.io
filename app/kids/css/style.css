@@ -1,6 +1,5 @@
 body {
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
+    
     padding: 10px;
     font-family: 'Mouse Memoirs', serif;
     overflow: hidden;
@@ -34,7 +33,7 @@ html,
     visibility: visible;
   }
 .title{
-    font-size: 3rem;
+    font-size: 2rem;
     padding: 10px;
 }
 .flex-shrink-0 {
@@ -70,6 +69,7 @@ main {
     padding:0 10px;
     overflow-x: hidden;
     overflow-y: auto;
+    width: 180px;
 }
 div.draggable {
     margin: 10px 0;
