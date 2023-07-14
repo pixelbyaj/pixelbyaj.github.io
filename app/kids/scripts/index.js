@@ -60,12 +60,11 @@ $(function () {
     });
 
     $("#play").on('click', () => {
+        let _this='';
         $(".new_drag").each(function () {
-            let _this = $(this);
-            setTimeout(($item) => {
-                speak($item.text());
-            }, 1, _this);
+             _this += $(this).text();
         });
+        speak(_this);
     });
 
     $("#sort").on('click', () => {
