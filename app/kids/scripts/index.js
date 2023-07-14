@@ -5,12 +5,11 @@ $(function () {
         $("#alphatets").append(`<div class="draggable drag" style="background-color:${getRandomColor()}"><span class="letter">${String.fromCharCode(i)}</span></div>`);
     }
 
-    function deleteLetter($item) {
-        if (!$item.hasClass("new_drag")) {
-            $item.find(".draggable").remove();
-        }
+    function addLetter($item)
+    {
+        $("#alphatets").append($item);
+        initiateDragabble($item);
     }
-
     function getRandomColor() {
         var letters = '0123456789ABCDEF';
         var color = '#';
@@ -28,20 +27,23 @@ $(function () {
         });
     }
 
-    $(".drag").draggable({
-        scroll: false,
-        containment: "document",
-        helper: "clone",
-        cursor: "move",
-        stop: function (event, ui) {
-            //$(this).css({ "position": "relative" });
-            //deleteLetter(ui.helper);
-        }
-    });
-
+    function initiateDragabble($item) {
+        $($item).draggable({
+            scroll: false,
+            containment: "document",
+            helper: "clone",
+            cursor: "move",
+            stop: function (event, ui) {
+               // var dragged = ui.helper.clone(true);
+               // addLetter(ui.helper);
+            }
+        });
+    }
+    initiateDragabble(".drag")
     $(".droppable").droppable({
         accept: ".drag",
         drop: function (event, ui) {
+            let ele = ui.draggable.clone();
             if (!ui.draggable.hasClass("new_drag")) {
                 ui.draggable.addClass("new_drag");
                 ui.draggable.removeClass("drag");
@@ -50,6 +52,7 @@ $(function () {
                 speak($(ui.draggable).text());
                 setTimeout(() => {
                     addDragabble(ui.draggable);
+                    addLetter(ele);
                 });
             }
         }
