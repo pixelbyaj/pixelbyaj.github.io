@@ -63,15 +63,11 @@ $(function () {
     });
 
     $("#play").on('click', () => {
-        let _this={};
-        $(".new_drag").each(function () {
-            _this[$(this).offset().left]=$(this).text();
-        });
-        
         let text='';
-        Object.keys(_this).forEach((item)=>{
-            text +=_this[item];
+        $(".new_drag").each(function () {
+            text += $(this).text();
         });
+       
         speak(text);
     });
 
