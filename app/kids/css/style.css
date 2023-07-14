@@ -68,7 +68,7 @@ main {
     padding:0 10px;
     overflow-x: hidden;
     overflow-y: auto;
-    width: 200px;
+    width: 190px;
 }
 div.draggable {
     margin: 10px 0;
