@@ -55,12 +55,9 @@ hr{
     margin: 5px !important;
 }
 main {
-    height: calc(100vh);
-    max-height: 100vh;
     overflow-x: hidden;
     overflow-y: hidden;
 }
-
 .sidebar {
     overflow-y: hidden;
     overflow-x: hidden;

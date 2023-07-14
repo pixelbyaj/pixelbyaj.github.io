@@ -1,4 +1,6 @@
 $(function () {
+    $("main").css({"height":document.documentElement.clientHeight});
+    $("#alphatets").css({"height":document.documentElement.clientHeight - 100});
     for (let i = 65; i < 91; i++) {
         $("#alphatets").append(`<div class="draggable drag" style="background-color:${getRandomColor()}"><span class="letter">${String.fromCharCode(i)}</span></div>`);
     }
