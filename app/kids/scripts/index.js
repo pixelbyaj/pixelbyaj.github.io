@@ -35,7 +35,7 @@ $(function () {
         cursor: "move",
         stop: function (event, ui) {
             //$(this).css({ "position": "relative" });
-            deleteLetter(ui.helper);
+            //deleteLetter(ui.helper);
         }
     });
 
