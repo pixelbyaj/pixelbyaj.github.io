@@ -24,13 +24,13 @@ html,
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #fff;
-    visibility: hidden;
+    opacity: 0.4;
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #fff;
-    visibility: visible;
+    opacity: 1;
   }
 .title{
     font-size: 2rem;
