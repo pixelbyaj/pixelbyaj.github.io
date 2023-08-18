@@ -106,7 +106,11 @@ label.error {
     display: none;
     font-weight: bold;
     font-size: 12px;
-    color: #000;
+    color: rgb(136, 146, 176);;
+}
+.download.btn-primary{
+    background-color: #55A44E;
+    border-color: #55A44E
 }
 footer {
     position: fixed;

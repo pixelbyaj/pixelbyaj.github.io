@@ -22,7 +22,7 @@ $(function () {
                 const ele = `<div class="row download">
                                         <div class="col-md-12">
                                             <input type="button" value="Download"
-                                            class="btn btn-primary rounded-0 py-2 px-4">
+                                            class="btn btn-primary rounded-0 py-2 px-4 download">
                                                 <span class="Download"></span>
                                         </div>
                                     </div>`
