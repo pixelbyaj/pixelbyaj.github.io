@@ -13,7 +13,7 @@ $(function () {
         }
         $.ajax({
             type: "POST",
-            url: "https://www.rudsta.in/api/inquire",
+            url: "https://www.pixelbyaj.com/api/inquire",
             data: JSON.stringify(formData),
             beforeSend: function () {
                 $submit.css('display', 'block').text(waitText);
