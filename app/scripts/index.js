@@ -35,6 +35,7 @@ document.ready(function () {
         new SitePage("pixelbyaj", {
             verticalAlignMiddle: true,
             backgroundColor: "#0a192f",
+            sameurl:false,
             sections: [{
                 anchor: "About",
                 templateUrl: "views/about.html"
@@ -46,6 +47,10 @@ document.ready(function () {
             {
                 anchor: "Something I've Built",
                 templateUrl: "views/projects.html"
+            },
+            {
+                anchor: "ISO 20022 Ecosystem",
+                templateUrl: "views/iso20022.html"
             },
             {
                 anchor: "Get In Touch",
