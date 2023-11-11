@@ -38,31 +38,42 @@ document.ready(function () {
             sameurl:false,
             sections: [{
                 anchor: "About",
-                templateUrl: "views/about.html"
+                templateUrl: "views/about.html",
+                sectionClass: "bg-about,sp-bg,fadeIn" 
             },
             {
-                anchor: "Where I've Worked",
-                templateUrl: "views/experience.html"
+                anchor: "Photography",
+                templateUrl: "views/photography.html",
+                sectionClass: "bg-photo,sp-bg,fadeIn"
             },
             {
                 anchor: "Something I've Built",
-                templateUrl: "views/projects.html"
+                templateUrl: "views/projects.html",
+                sectionClass: "bg-project,sp-bg,fadeIn"
             },
             {
                 anchor: "ISO 20022 Ecosystem",
-                templateUrl: "views/iso20022.html"
+                templateUrl: "views/iso20022.html",
+                sectionClass: "bg-iso20022,sp-bg,fadeIn"
             },
             {
                 anchor: "Get In Touch",
-                templateUrl: "views/contact.html"
+                templateUrl: "views/contact.html",
+                sectionClass: "bg-contact,sp-bg,fadeIn"
             }
             ],
             anchors: false,
             easing: "ease",
-            transitionSpeed: 1000,
+            transitionSpeed: 1500,
+            pageTransitionStart:(prevPage, currentPage)=>{
+                if(prevPage){                    
+                    $(prevPage).find(".sp-bg").removeClass('fadeIn').addClass('fadeOut')                    
+                }
+                $(currentPage).find(".sp-bg").removeClass('fadeOut').addClass('fadeIn')                    
+            },
             pageTransitionEnd: (currentPage) => {
                 console.log(`currentPage :${currentPage.id}`);
-                const exp = $("#experience");
+                const exp = $("#iso20022");
                 if(exp.length>0 && expCarousel === undefined){
                     expCarousel = exp.find(".carousel");
                     expCarousel.carousel({
