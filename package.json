@@ -3,6 +3,9 @@
     "version": "1.0.0",
     "description": "PixelByAJ Profile",
     "main": "index.js",
+    "engines": {
+        "node": "~18.13"
+    },
     "dependencies": {
         "typescript": "^3.7.5"
     },
