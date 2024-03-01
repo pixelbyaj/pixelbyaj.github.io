@@ -617,14 +617,6 @@ input[type="text"]:focus {
     padding: 1.5rem 0;
 }
 
-.header{
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-}
-.header .slidecontainer{
-    padding:0 10px;
-}
 #main-menu li.open:hover {
     background-color: #fafafa
 }
@@ -1945,13 +1937,26 @@ h2 {
     z-index: 100;
 }
 
-.tool.drawer.menu.open{
+.tool.drawer.menu.open, .tool.drawer.menu.hide, .tool.drawer.swatch.hide{
     display: none;
 }
 
 .header{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
     padding: 0 10px;
-    height: 40px;
+    height: 60px;
+}
+.header .slidecontainer{
+    padding:0 10px;
+}
+.header .shape{
+    width: 48px;
+    margin:0 10px;    
+}
+.header .shape:hover{
+    cursor: pointer;    
 }
 .tool.drawer.swatch{
     position: fixed;

@@ -8,11 +8,12 @@ const drawing = (function () {
     let transformer = null;
     let selectedColor = "#4285f4";
     let isFillSelect = false;
+    let strokeWidth = 5;
     const Shape = {
         rectangle: (data) => {
             return new Konva.Rect({
                 stroke: selectedColor,
-                strokeWidth: 5,
+                strokeWidth: strokeWidth,
                 globalCompositeOperation: 'source-over',
                 x: data.x,
                 y: data.y,
@@ -23,7 +24,7 @@ const drawing = (function () {
         circle: (data) => {
             return new Konva.Circle({
                 stroke: selectedColor,
-                strokeWidth: 5,
+                strokeWidth: strokeWidth,
                 globalCompositeOperation: 'source-over',
                 x: data.x,
                 y: data.y,
@@ -33,7 +34,7 @@ const drawing = (function () {
         line: (data) => {
             return new Konva.Line({
                 stroke: selectedColor,
-                strokeWidth: 5,
+                strokeWidth: strokeWidth,
                 globalCompositeOperation: 'source-over',
                 points: data.points
             })
@@ -62,6 +63,8 @@ const drawing = (function () {
 
         stage.on('mousemove touchmove', function (e) {
             if (!isDrawing || isFillSelect) return;
+            document.getElementById('drawer').classList.add('hide');
+            document.getElementById('swatch').classList.add('hide');
             var pos = stage.getPointerPosition();
             if (currentShape && (selectedShape === 'line' || selectedShape === 'rectangle' || selectedShape === 'circle')) {
                 if (selectedShape === 'line') {
@@ -77,11 +80,14 @@ const drawing = (function () {
                     currentShape.radius(radius);
                 }
                 layer.batchDraw();
+                document.getElementById('clear').classList.remove('disabled');
             }
         });
 
         stage.on('mouseup touchend', function (e) {
             isDrawing = false;
+            document.getElementById('drawer').classList.remove('hide');
+            document.getElementById('swatch').classList.remove('hide');
         });
 
         stage.on('click tap', function (e) {
@@ -181,13 +187,19 @@ const drawing = (function () {
         init('container');
     }
 
+    const updateStroke = (value) => {
+        strokeWidth = value;
+    }
+
     return {
         init: init,
         selectShape: selectShape,
         selectTransform: selectTransform,
         selectText: selectText,
         selectFill: selectFill,
-        fillColor: fillColor
+        fillColor: fillColor,
+        updateStroke: updateStroke,
+        clear:clear,
     };
 })();
 
@@ -267,7 +279,12 @@ const toolbar = (() => {
 
         },
         "undo": (e) => { },
-        "delete": (e) => {
+        "clear": (e) => {
+            if(document.getElementById('clear').classList.contains('disabled')){
+                return;
+            }
+            drawing.clear();
+            document.getElementById('clear').classList.add('disabled');
         }
     };
 
@@ -381,6 +398,9 @@ const toolbar = (() => {
         }, { 'once': true });
     });
 
+    document.getElementById('strokeRange').addEventListener('input', (e) => {
+        drawing.updateStroke(e.target.value);
+    });
     const selectMenuEvent = (selectedMenuId) => {
         const sourceEle = document.getElementById(selectedMenuId);
         const destEle = document.getElementById('drawer');
@@ -388,7 +408,7 @@ const toolbar = (() => {
         let img = destEle.querySelector("img");
         img.src = img.src.replace('.svg', '-on.svg');
 
-        document.querySelectorAll('.menu-item').forEach((ele) => { 
+        document.querySelectorAll('.menu-item').forEach((ele) => {
             ele.classList.remove('active');
             let img = ele.querySelector("img");
             img.src = img.src.replace('-on.svg', '.svg');
