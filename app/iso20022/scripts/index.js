@@ -37,36 +37,43 @@ document.ready(function () {
             backgroundColor: "#0a192f",
             sameurl: false,
             sections: [{
+                pageId:"iso20022_about",
                 anchor: "About",
                 templateUrl: "views/about.html",
                 sectionClass: "sp-bg,fadeIn"
             },
             {
+                pageId:"iso20022_schema",
                 anchor: "Schema",
                 templateUrl: "views/schema.html",
                 sectionClass: "sp-bg,fadeIn"
             },
             {
+                pageId:"iso20022_render",
                 anchor: "Render",
                 templateUrl: "views/render.html",
                 sectionClass: "sp-bg,fadeIn"
             },
             {
-                anchor: "Download/Upload",
+                pageId:"iso20022_download",
+                anchor: "Download",
                 templateUrl: "views/download.html",
                 sectionClass: "sp-bg,fadeIn"
             },
             {
-                anchor: "Extract",
+                pageId:"iso20022_parsing",
+                anchor: "Parsing",
                 templateUrl: "views/parsing.html",
                 sectionClass: "sp-bg,fadeIn"
             },
             {
+                pageId:"iso20022_upload",
                 anchor: "Upload",
                 templateUrl: "views/upload.html",
                 sectionClass: "sp-bg,fadeIn"
             },
             {
+                pageId:"iso20022_contact",
                 anchor: "Contact",
                 templateUrl: "views/contact.html",
                 sectionClass: "sp-bg,fadeIn"

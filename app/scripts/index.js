@@ -37,26 +37,31 @@ document.ready(function () {
             backgroundColor: "#0a192f",
             sameurl: false,
             sections: [{
+                pageId:"about",
                 anchor: "About",
                 templateUrl: "views/about.html",
                 sectionClass: "bg-about,sp-bg,fadeIn"
             },
             {
+                pageId:"projects",
                 anchor: "Something I've Built",
                 templateUrl: "views/projects.html",
                 sectionClass: "bg-project,sp-bg,fadeIn"
             },
             {
+                pageId:"iso20022_ecosystem",
                 anchor: "ISO 20022 Ecosystem",
                 templateUrl: "views/iso20022.html",
                 sectionClass: "bg-iso20022,sp-bg,fadeIn"
             },
             {
+                pageId:"photography",
                 anchor: "Photography",
                 templateUrl: "views/photography.html",
                 sectionClass: "bg-photo,sp-bg,fadeIn"
             },
             {
+                pageId:"contact",
                 anchor: "Get In Touch",
                 templateUrl: "views/contact.html",
                 sectionClass: "bg-contact,sp-bg,fadeIn"
