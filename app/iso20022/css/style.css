@@ -36,6 +36,20 @@ a:hover {
 #contact .title{
     font-size: 2rem;
 }
+.contact{
+    margin: 30px 0;
+    text-align: center;
+}
+.contact .email-link{
+    background-color: transparent;
+    border: 1px solid #64ffda;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 1rem;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+}
 footer{
     position: absolute;
     bottom: 10;
