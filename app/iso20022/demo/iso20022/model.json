@@ -1,0 +1,80 @@
+{
+    "Document": {
+        "Document_BkToCstmrStmt": {
+            "Document_BkToCstmrStmt_GrpHdr": {
+                "Document_BkToCstmrStmt_GrpHdr_MsgId": "235549650",
+                "Document_BkToCstmrStmt_GrpHdr_CreDtTm": "2023-10-05T14:43:51.979",
+                "Document_BkToCstmrStmt_GrpHdr_MsgRcpt": {
+                    "Document_BkToCstmrStmt_GrpHdr_MsgRcpt_Nm": "Test Client Ltd.",
+                    "Document_BkToCstmrStmt_GrpHdr_MsgRcpt_Id": {
+                        "Document_BkToCstmrStmt_GrpHdr_MsgRcpt_Id_OrgId": {
+                            "Document_BkToCstmrStmt_GrpHdr_MsgRcpt_Id_OrgId_Othr": [
+                                {
+                                    "Document_BkToCstmrStmt_GrpHdr_MsgRcpt_Id_OrgId_Othr_Id": "test001"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "Document_BkToCstmrStmt_GrpHdr_AddtlInf": "AddTInf"
+            },
+            "Document_BkToCstmrStmt_Stmt": [
+                {
+                    "Document_BkToCstmrStmt_Stmt_Id": "258158850",
+                    "Document_BkToCstmrStmt_Stmt_ElctrncSeqNb": "1",
+                    "Document_BkToCstmrStmt_Stmt_LglSeqNb": "1",
+                    "Document_BkToCstmrStmt_Stmt_CreDtTm": "2023-10-05T14:43:52.098",
+                    "Document_BkToCstmrStmt_Stmt_FrToDt": {
+                        "Document_BkToCstmrStmt_Stmt_FrToDt_FrDtTm": "2023-09-30T20:00:00.000",
+                        "Document_BkToCstmrStmt_Stmt_FrToDt_ToDtTm": "2023-10-01T19:59:59.000"
+                    },
+                    "Document_BkToCstmrStmt_Stmt_Acct": {
+                        "Document_BkToCstmrStmt_Stmt_Acct_Tp": {
+                            "Document_BkToCstmrStmt_Stmt_Acct_Tp_Prtry": "IBDA_DDA"
+                        },
+                        "Document_BkToCstmrStmt_Stmt_Acct_Ccy": "USD",
+                        "Document_BkToCstmrStmt_Stmt_Acct_Nm": "Sample Name 123",
+                        "Document_BkToCstmrStmt_Stmt_Acct_Svcr": {
+                            "Document_BkToCstmrStmt_Stmt_Acct_Svcr_FinInstnId": {
+                                "Document_BkToCstmrStmt_Stmt_Acct_Svcr_FinInstnId_BICFI": "GSCRUS30",
+                                "Document_BkToCstmrStmt_Stmt_Acct_Svcr_FinInstnId_Nm": "Goldman Sachs Bank"
+                            }
+                        }
+                    },
+                    "Document_BkToCstmrStmt_Stmt_Bal": [
+                        {
+                            "Document_BkToCstmrStmt_Stmt_Bal_Tp": {
+                                "Document_BkToCstmrStmt_Stmt_Bal_Tp_CdOrPrtry": {
+                                    "Document_BkToCstmrStmt_Stmt_Bal_Tp_CdOrPrtry_Cd": "OPBD"
+                                }
+                            },
+                            "Document_BkToCstmrStmt_Stmt_Bal_Amt": {
+                                "Document_BkToCstmrStmt_Stmt_Bal_Amt_Ccy": "USD",
+                                "Document_BkToCstmrStmt_Stmt_Bal_Amt_Amt": "843686.20"
+                            },
+                            "Document_BkToCstmrStmt_Stmt_Bal_CdtDbtInd": "DBIT",
+                            "Document_BkToCstmrStmt_Stmt_Bal_Dt": {
+                                "Document_BkToCstmrStmt_Stmt_Bal_Dt_DtTm": "2023-09-30T20:00:00.000"
+                            }
+                        },
+                        {
+                            "Document_BkToCstmrStmt_Stmt_Bal_Tp": {
+                                "Document_BkToCstmrStmt_Stmt_Bal_Tp_CdOrPrtry": {
+                                    "Document_BkToCstmrStmt_Stmt_Bal_Tp_CdOrPrtry_Cd": "CLAV"
+                                }
+                            },
+                            "Document_BkToCstmrStmt_Stmt_Bal_Amt": {
+                                "Document_BkToCstmrStmt_Stmt_Bal_Amt_Ccy": "USD",
+                                "Document_BkToCstmrStmt_Stmt_Bal_Amt_Amt": "334432401.27"
+                            },
+                            "Document_BkToCstmrStmt_Stmt_Bal_CdtDbtInd": "CRDT",
+                            "Document_BkToCstmrStmt_Stmt_Bal_Dt": {
+                                "Document_BkToCstmrStmt_Stmt_Bal_Dt_DtTm": "2023-10-01T23:59:00.000Z"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

@@ -73,6 +73,12 @@ document.ready(function () {
                 sectionClass: "sp-bg,fadeIn"
             },
             {
+                pageId:"iso20022_demo",
+                anchor: "Demo",
+                templateUrl: "views/demo.html",
+                sectionClass: "sp-bg,fadeIn"
+            },
+            {
                 pageId:"iso20022_contact",
                 anchor: "Contact",
                 templateUrl: "views/contact.html",

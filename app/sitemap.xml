@@ -7,7 +7,37 @@
   </url>
   <url>
     <loc>https://www.pixelbyaj.com/iso20022/index.html</loc>
-    <lastmod>2024-08-01</lastmod>
+    <lastmod>2024-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://pixelbyaj.com/iso20022/#iso20022_about</loc>
+    <lastmod>2024-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://pixelbyaj.com/iso20022/#iso20022_schema</loc>
+    <lastmod>2024-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://pixelbyaj.com/iso20022/#iso20022_render</loc>
+    <lastmod>2024-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://pixelbyaj.com/iso20022/#iso20022_download</loc>
+    <lastmod>2024-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://pixelbyaj.com/iso20022/#iso20022_parsing</loc>
+    <lastmod>2024-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://pixelbyaj.com/iso20022/#iso20022_upload</loc>
+    <lastmod>2024-08-02</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
