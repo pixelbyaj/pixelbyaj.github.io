@@ -11,32 +11,42 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://pixelbyaj.com/iso20022/#iso20022_about</loc>
+    <loc>https://pixelbyaj.com/iso20022/index.html</loc>
     <lastmod>2024-08-02</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://pixelbyaj.com/iso20022/#iso20022_schema</loc>
+    <loc>https://pixelbyaj.com/iso20022/views/about.html</loc>
     <lastmod>2024-08-02</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://pixelbyaj.com/iso20022/#iso20022_render</loc>
+    <loc>https://pixelbyaj.com/iso20022/contact.html</loc>
     <lastmod>2024-08-02</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://pixelbyaj.com/iso20022/#iso20022_download</loc>
+    <loc>https://pixelbyaj.com/iso20022/render.html</loc>
     <lastmod>2024-08-02</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://pixelbyaj.com/iso20022/#iso20022_parsing</loc>
+    <loc>https://pixelbyaj.com/iso20022/download.html</loc>
     <lastmod>2024-08-02</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://pixelbyaj.com/iso20022/#iso20022_upload</loc>
+    <loc>https://pixelbyaj.com/iso20022/parsing.html</loc>
+    <lastmod>2024-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://pixelbyaj.com/iso20022/upload.html</loc>
+    <lastmod>2024-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://pixelbyaj.com/iso20022/demo.html</loc>
     <lastmod>2024-08-02</lastmod>
     <changefreq>monthly</changefreq>
   </url>
