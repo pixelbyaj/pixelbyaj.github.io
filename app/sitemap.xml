@@ -1,58 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.pixelbyaj.com/iso20022/index.html</loc>
+    <loc>https://default/iso20022/index.html</loc>
     <lastmod>2024-08-02</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://pixelbyaj.com/iso20022/index.html</loc>
+    <loc>https://default/iso20022/index.html</loc>
     <lastmod>2024-08-02</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://pixelbyaj.com/iso20022/views/about.html</loc>
+    <loc>https://default/iso20022/views/about.html</loc>
     <lastmod>2024-08-02</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://pixelbyaj.com/iso20022/contact.html</loc>
+    <loc>https://default/iso20022/contact.html</loc>
     <lastmod>2024-08-02</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://pixelbyaj.com/iso20022/render.html</loc>
+    <loc>https://default/iso20022/render.html</loc>
     <lastmod>2024-08-02</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://pixelbyaj.com/iso20022/download.html</loc>
+    <loc>https://default/iso20022/download.html</loc>
     <lastmod>2024-08-02</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://pixelbyaj.com/iso20022/parsing.html</loc>
+    <loc>https://default/iso20022/parsing.html</loc>
     <lastmod>2024-08-02</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://pixelbyaj.com/iso20022/upload.html</loc>
+    <loc>https://default/iso20022/upload.html</loc>
     <lastmod>2024-08-02</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://pixelbyaj.com/iso20022/demo.html</loc>
+    <loc>https://default/iso20022/demo.html</loc>
     <lastmod>2024-08-02</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.pixelbyaj.com/sitepage.jsx/index.html</loc>
+    <loc>https://default/sitepage.jsx/index.html</loc>
     <lastmod>2024-08-01</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.pixelbyaj.com/sitepage/index.html</loc>
+    <loc>https://default/sitepage/index.html</loc>
     <lastmod>2024-08-01</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
