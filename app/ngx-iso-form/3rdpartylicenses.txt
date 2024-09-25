@@ -5,7 +5,7 @@ MIT
 MIT
 The MIT License
 
-Copyright (c) 2023 Google LLC.
+Copyright (c) 2024 Google LLC.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -39,7 +39,7 @@ MIT
 MIT
 The MIT License
 
-Copyright (c) 2023 Google LLC.
+Copyright (c) 2024 Google LLC.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -74,7 +74,7 @@ SEE LICENSE IN LICENSE
 
 angular-split
 Apache-2.0
-                                 Apache License
+no                                 Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -262,7 +262,7 @@ Apache-2.0
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2017 Bertrand Gaillard
+   Copyright 2017-2024 Angular-Split
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -277,6 +277,9 @@ Apache-2.0
    limitations under the License.
 
 ngx-iso-form
+Apache-2.0
+
+ngx-xml-message
 Apache-2.0
 
 rxjs
@@ -489,7 +492,7 @@ zone.js
 MIT
 The MIT License
 
-Copyright (c) 2010-2023 Google LLC. https://angular.io/license
+Copyright (c) 2010-2024 Google LLC. https://angular.io/license
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
