@@ -3,6 +3,7 @@ body {
     font-family: 'Roboto Slab', serif;
     background-color: #0a192f;
     color: #fff;
+    overflow-x: hidden;
 
 }
 
