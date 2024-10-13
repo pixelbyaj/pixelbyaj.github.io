@@ -77,7 +77,6 @@ document.ready(function () {
                 $(currentPage).find(".sp-bg").removeClass('fadeOut').addClass('fadeIn')
             },
             pageTransitionEnd: (currentPage) => {
-                console.log(`currentPage :${currentPage.id}`);
                 const exp = $("#iso20022");
                 if (exp.length > 0 && expCarousel === undefined) {
                     expCarousel = exp.find(".carousel");
