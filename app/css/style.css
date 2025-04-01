@@ -26,6 +26,9 @@ a:hover {
     color: #fff;
     font-size: 6rem;
 }
+.shine{
+    color: #64ffda;
+}
 .container .social
 {
     font-size: 3rem;
@@ -40,10 +43,9 @@ a:hover {
 }
 
 .aka {
-    font-size: 0.7em;
+    font-size: 1.8em;
     margin-top: -10px;
     color: #fff;
-    font-size: 1.2rem;
 }
 
 .skills {
