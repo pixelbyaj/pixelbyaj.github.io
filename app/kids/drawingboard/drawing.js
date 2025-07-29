@@ -95,6 +95,7 @@ const drawing = (function () {
                 e.target.fill(selectedColor);
             }
         });
+        
     }
 
 
@@ -413,7 +414,6 @@ const toolbar = (() => {
             let img = ele.querySelector("img");
             img.src = img.src.replace('-on.svg', '.svg');
         });
-        sourceEle.classList.add('active');
         sourceEle.classList.add('active');
         img = sourceEle.querySelector("img");
         img.src = img.src.replace('.svg', '-on.svg');
