@@ -1,12 +1,12 @@
 {
+    "navigationFallback": {
+      "rewrite": "/index.html",
+      "exclude": ["/images/*.{png,jpg,gif}", "/css/*", "/scripts/*"]
+    },
     "responseOverrides": {
       "404": {
         "rewrite": "/index.html"
       }
-    },
-    "navigationFallback": {
-      "rewrite": "index.html",
-      "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
     },
     "globalHeaders": {
       "X-Content-Type-Options": "nosniff",
