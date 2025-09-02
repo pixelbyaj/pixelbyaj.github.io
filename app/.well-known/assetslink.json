@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.pixelbyaj.twa",
+      "sha256_cert_fingerprints": [
+        "48:45:C6:E0:41:BB:9E:23:24:7A:BB:E3:FC:98:BC:63:25:19:A0:E1:26:BE:88:13:D3:5D:06:F7:91:B3:FC:2E"
+      ]
+    }
+  }
+]
