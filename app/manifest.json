@@ -1,12 +1,11 @@
 {
-    "name": "PixélByÁJ",
-    "short_name": "PixélByÁJ",
-    "description": "Abhishek Joshi aka PixelByAJ porfolio",
-    "start_url": "index.html",
+    "name": "Abhishek Joshi | Full-Stack Developer and AI Engineer",
+    "short_name": "PixelByAJ",
+    "description": "Abhishek Joshi builds full-stack products with AI at the core.",
+    "start_url": "/",
     "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#ffffff",
-    "homepage_url": "https://www.pixelbyaj.com",
+    "background_color": "#070a26",
+    "theme_color": "#070a26",
     "icons": [{
         "src": "images/pixelbyajlogo-192-192.png",
         "sizes": "192x192",
