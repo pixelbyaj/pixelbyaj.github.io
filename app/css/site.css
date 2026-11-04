@@ -1,0 +1,850 @@
+/* pixelbyaj.com: console theme
+   The whole page is one terminal session. Each section starts with the command that "printed" it.
+   Custom theme (not green-on-black): ink-blue base, blue prompt, mint paths, amber strings, rose numbers. */
+
+:root {
+    --bg: #070a26;
+    --panel: #0c1035;
+    --panel-2: #141a52;
+    --line: rgba(140, 150, 255, 0.2);
+    --fg: #e6e8ff;
+    --dim: #8a90bf;
+
+    --blue: #8c96ff;   /* user@host, links */
+    --mint: #3fd9b0;   /* paths, success, checks */
+    --amber: #ffc24d;  /* strings */
+    --rose: #ff6f9c;   /* numbers, highlights */
+    --brand: #4c5bff;  /* solid keys, talk band */
+
+    --mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+    --wrap: 82rem;
+    --pad: clamp(1.1rem, 4vw, 3rem);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+}
+
+body {
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 0.96875rem; /* 15.5px: mono reads large */
+    line-height: 1.7;
+    color: var(--fg);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Faint scanline texture: the only decoration on the page */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: repeating-linear-gradient(to bottom, rgba(140, 150, 255, 0.025) 0 1px, transparent 1px 4px);
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    font-family: var(--mono);
+}
+
+a {
+    color: var(--blue);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+}
+
+a:hover {
+    color: var(--fg);
+    text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+    outline: 2px solid var(--mint);
+    outline-offset: 3px;
+}
+
+::selection {
+    background: var(--brand);
+    color: #fff;
+}
+
+.wrap {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.skip {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 20;
+    padding: 0.4rem 0.7rem;
+    background: var(--mint);
+    color: var(--bg);
+}
+
+.skip:focus {
+    top: 1rem;
+}
+
+.dim {
+    color: var(--dim);
+}
+
+/* Prompt pieces */
+.u { color: var(--blue); }
+.p { color: var(--mint); }
+
+.cmd {
+    margin: 0 0 1.25rem;
+    color: var(--fg);
+    overflow-wrap: anywhere;
+}
+
+/* ================= Keys (buttons) ================= */
+
+.key {
+    display: inline-block;
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    color: var(--fg);
+    text-decoration: none;
+    line-height: 1.4;
+    transition: background-color 0.12s, color 0.12s, border-color 0.12s;
+}
+
+.key::before {
+    content: "[ ";
+    color: var(--dim);
+}
+
+.key::after {
+    content: " ]";
+    color: var(--dim);
+}
+
+.key:hover {
+    background: var(--fg);
+    border-color: var(--fg);
+    color: var(--bg);
+}
+
+.key:hover::before,
+.key:hover::after {
+    color: var(--bg);
+}
+
+.key-solid {
+    background: var(--brand);
+    border-color: var(--brand);
+    color: #fff;
+}
+
+.key-solid::before,
+.key-solid::after {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ================= Title bar ================= */
+
+.titlebar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(12, 16, 53, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+}
+
+.titlebar-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}
+
+.brand {
+    margin-right: auto;
+    font-weight: 700;
+    color: var(--fg);
+    text-decoration: none;
+}
+
+.tabs {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tabs a {
+    display: block;
+    padding: 0.35rem 0.9rem;
+    border-left: 1px solid var(--line);
+    color: var(--dim);
+    text-decoration: none;
+}
+
+.tabs li:last-child a {
+    border-right: 1px solid var(--line);
+}
+
+.tabs a:hover {
+    background: var(--panel-2);
+    color: var(--fg);
+}
+
+.titlebar .key {
+    padding: 0.3rem 0.75rem;
+}
+
+/* ================= Hero ================= */
+
+.hero {
+    padding: clamp(2.5rem, 7vw, 5.5rem) 0 clamp(3.5rem, 8vw, 6rem);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+    align-items: start;
+}
+
+.whoami {
+    margin: 0 0 1.25rem;
+    color: var(--dim);
+}
+
+.headline {
+    font-size: clamp(2.2rem, 4.5vw, 4.25rem);
+    font-weight: 800;
+    line-height: 1.18;
+    letter-spacing: -0.04em;
+}
+
+/* Block cursor that rides on the newest token while the headline streams */
+.tok.is-cursor::after {
+    content: "";
+    display: inline-block;
+    width: 0.55em;
+    height: 0.9em;
+    margin-left: 0.06em;
+    vertical-align: -0.08em;
+    background: var(--mint);
+}
+
+.token-meta {
+    min-height: 1.7em;
+    margin: 0.9rem 0 0;
+    font-size: 0.8125rem;
+    color: var(--mint);
+}
+
+.lede {
+    max-width: 58ch;
+    margin: 1.25rem 0 0;
+    font-size: 1.0625rem;
+    color: rgba(230, 232, 255, 0.86);
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 2rem 0 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .js .headline[data-tokenize] .tok,
+    .js .hero .whoami,
+    .js .hero .lede,
+    .js .hero .actions {
+        opacity: 0;
+    }
+
+    /* Tokens appear instantly, like terminal output; the surrounding copy fades in */
+    .js .headline[data-tokenize] .tok.is-in {
+        opacity: 1;
+    }
+
+    .js .hero .is-in:not(.tok) {
+        opacity: 1;
+        transition: opacity 0.2s;
+    }
+}
+
+/* ================= Interactive terminal ================= */
+
+.term {
+    display: flex;
+    flex-direction: column;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    box-shadow: 0 0 0 1px rgba(7, 10, 38, 0.6), 0 30px 80px -30px rgba(76, 91, 255, 0.45);
+}
+
+.term-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--panel-2);
+    font-size: 0.8125rem;
+}
+
+.term-bar h2 {
+    font-size: 0.8125rem;
+    font-weight: 700;
+}
+
+.term-bar h2::before {
+    content: "\25CF  ";
+    color: var(--mint);
+}
+
+.term-bar p {
+    margin: 0;
+    color: var(--dim);
+}
+
+/* No-JS / crawler view: plain Q&A */
+.qa {
+    padding: 0.25rem 1rem 1rem;
+    font-size: 0.9375rem;
+}
+
+.qa-item {
+    padding: 0.9rem 0;
+    border-bottom: 1px dashed var(--line);
+}
+
+.qa-item:last-child {
+    border-bottom: 0;
+}
+
+.qa-item h3 {
+    font-size: 0.9375rem;
+    color: var(--amber);
+}
+
+.qa-item h3::before {
+    content: "> ";
+    color: var(--dim);
+}
+
+.qa-item p {
+    margin: 0.35rem 0 0;
+}
+
+.term-log,
+.term-form,
+.term-suggest {
+    display: none;
+}
+
+/* JS view: a working terminal */
+.js .qa {
+    display: none;
+}
+
+.js .term-log {
+    display: block;
+    height: clamp(17rem, 44vh, 25rem);
+    padding: 0.9rem 1rem 0.25rem;
+    overflow-y: auto;
+    font-size: 0.875rem;
+    line-height: 1.65;
+}
+
+.line {
+    margin: 0 0 0.6rem;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.line-in {
+    margin-bottom: 0.2rem;
+}
+
+.line-out a {
+    color: var(--blue);
+}
+
+.line-err { color: var(--rose); }
+.line-ok { color: var(--mint); }
+.line-dim { color: var(--dim); }
+
+.line.is-streaming::after,
+.cursor::after {
+    content: "";
+    display: inline-block;
+    width: 0.6em;
+    height: 1.15em;
+    margin-left: 0.1em;
+    vertical-align: -0.2em;
+    background: var(--fg);
+}
+
+.js .term-form {
+    display: flex;
+    align-items: center;
+    gap: 0.6ch;
+    padding: 0.5rem 1rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+.term-form label {
+    flex: none;
+}
+
+.term-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.2rem 0;
+    border: 0;
+    background: transparent;
+    color: var(--fg);
+    font: inherit;
+    caret-color: var(--mint);
+    caret-shape: block;
+}
+
+.term-form input:focus {
+    outline: none;
+}
+
+.term-form:focus-within {
+    background: rgba(140, 150, 255, 0.06);
+}
+
+.js .term-suggest {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0.75rem 1rem 0.9rem;
+    border-top: 1px solid var(--line);
+    list-style: none;
+}
+
+.term-suggest button {
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--mint);
+    font: inherit;
+    font-size: 0.8125rem;
+    cursor: pointer;
+}
+
+.term-suggest button:hover {
+    background: var(--mint);
+    border-color: var(--mint);
+    color: var(--bg);
+}
+
+.term-suggest button:disabled {
+    opacity: 0.5;
+    cursor: progress;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .cursor::after,
+    .line.is-streaming::after {
+        animation: blink 1.05s steps(1) infinite;
+    }
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* ================= Content blocks ================= */
+
+.block {
+    padding: clamp(3.5rem, 8vw, 6rem) 0;
+    border-top: 1px dashed var(--line);
+}
+
+.md-h {
+    font-size: clamp(1.9rem, 4vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+}
+
+.md-h::before {
+    content: "# ";
+    color: var(--dim);
+    font-weight: 400;
+}
+
+.md-lede {
+    max-width: 60ch;
+    margin: 1rem 0 0;
+    color: var(--dim);
+}
+
+.md-body {
+    max-width: 60ch;
+    margin: 1.5rem 0 0;
+}
+
+/* What I build */
+.capabilities {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+}
+
+.capability {
+    padding: 1.4rem 1.5rem 1.5rem;
+    border: 1px solid var(--line);
+    background: rgba(12, 16, 53, 0.6);
+}
+
+.capability h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.capability h3::before {
+    content: "## ";
+    color: var(--dim);
+    font-weight: 400;
+}
+
+.capability p {
+    margin: 0.6rem 0 0;
+    max-width: 54ch;
+}
+
+.capability .tags {
+    color: var(--amber);
+    font-size: 0.875rem;
+}
+
+/* How I build */
+.split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    gap: 2rem clamp(2rem, 5vw, 5rem);
+    margin-top: 2rem;
+    align-items: start;
+}
+
+.quote {
+    margin: 0;
+    padding-left: 1.1rem;
+    border-left: 3px solid var(--brand);
+    font-size: clamp(1.2rem, 2vw, 1.55rem);
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+}
+
+.checks {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.checks li {
+    position: relative;
+    padding: 0 0 1.4rem 3.2rem;
+}
+
+.checks li::before {
+    content: "[x]";
+    position: absolute;
+    left: 0;
+    top: 0.05em;
+    color: var(--mint);
+    font-weight: 700;
+}
+
+.checks h3 {
+    font-size: 1.0625rem;
+    font-weight: 700;
+}
+
+.checks p {
+    margin: 0.3rem 0 0;
+    color: rgba(230, 232, 255, 0.78);
+}
+
+/* Open source: package-manager output */
+.registry {
+    width: 100%;
+    margin-top: 2.25rem;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.registry thead th {
+    padding: 0 1.25rem 0.6rem 0;
+    font-weight: 500;
+    text-align: left;
+    color: var(--dim);
+    border-bottom: 1px solid var(--line);
+}
+
+.registry .group-row th {
+    padding: 1.75rem 0 0.4rem;
+    font-weight: 400;
+    text-align: left;
+    color: var(--dim);
+}
+
+.registry tbody tr:not(.group-row) > * {
+    padding: 0.75rem 1.25rem 0.75rem 0;
+    border-bottom: 1px dashed rgba(140, 150, 255, 0.12);
+    text-align: left;
+    vertical-align: top;
+}
+
+.registry tbody tr:not(.group-row):hover {
+    background: rgba(140, 150, 255, 0.06);
+}
+
+.registry tbody tr:not(.group-row) th {
+    width: 21%;
+    font-size: 0.9375rem;
+    font-weight: 700;
+}
+
+.registry tbody th a {
+    color: var(--mint);
+    text-decoration: none;
+}
+
+.registry tbody th a:hover {
+    text-decoration: underline;
+}
+
+.registry .stack {
+    width: 20%;
+    color: var(--amber);
+}
+
+.registry .dl {
+    width: 8.5rem;
+    padding-right: 0;
+}
+
+.registry .dl img {
+    display: block;
+    width: auto;
+    height: 20px;
+}
+
+/* Stack: JSON */
+.json {
+    margin: 2rem 0 0;
+    padding: 1.4rem 1.5rem;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    font-family: var(--mono);
+    font-size: 0.9375rem;
+    line-height: 1.85;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.json .k { color: var(--blue); }
+.json .s { color: var(--amber); }
+.json .n { color: var(--rose); }
+.json .pn { color: var(--dim); }
+
+/* ================= Talk ================= */
+
+.talk {
+    padding: clamp(4rem, 9vw, 7rem) 0;
+    background: var(--brand);
+    color: #fff;
+}
+
+.talk .cmd .u,
+.talk .cmd .p {
+    color: #fff;
+    font-weight: 700;
+}
+
+.talk h2 {
+    font-size: clamp(3rem, 10vw, 8.5rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.06em;
+}
+
+.talk .cursor::after {
+    width: 0.5em;
+    height: 0.8em;
+    margin-left: 0.08em;
+    vertical-align: -0.02em;
+    background: #fff;
+}
+
+.talk-lede {
+    max-width: 58ch;
+    margin: 1.75rem 0 0;
+    font-size: 1.0625rem;
+}
+
+.email {
+    display: inline-block;
+    margin-top: 2.25rem;
+    padding: 0.4rem 0.75rem;
+    background: var(--bg);
+    color: #fff;
+    font-size: clamp(1.15rem, 3.6vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.email:hover {
+    background: #fff;
+    color: var(--bg);
+}
+
+.talk-note {
+    margin: 1.75rem 0 0;
+}
+
+.talk-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.75rem;
+    margin: 0.75rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.talk a:not(.email) {
+    color: #fff;
+}
+
+.talk :focus-visible {
+    outline-color: #fff;
+}
+
+/* ================= Footer ================= */
+
+.site-footer {
+    padding: 2rem 0;
+    font-size: 0.875rem;
+    color: var(--dim);
+}
+
+.footer-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 2rem;
+}
+
+.footer-grid p {
+    margin: 0;
+}
+
+/* ================= Responsive ================= */
+
+@media (max-width: 1040px) {
+    .hero-grid,
+    .split {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .tabs {
+        display: none;
+    }
+}
+
+@media (max-width: 760px) {
+    .capabilities {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .registry thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+    }
+
+    .registry,
+    .registry tbody,
+    .registry tr,
+    .registry th,
+    .registry td {
+        display: block;
+        width: auto;
+    }
+
+    .registry tbody tr:not(.group-row) {
+        padding: 0.9rem 0;
+        border-bottom: 1px dashed rgba(140, 150, 255, 0.16);
+    }
+
+    .registry tbody tr:not(.group-row) > *,
+    .registry tbody tr:not(.group-row) th,
+    .registry .stack,
+    .registry .dl {
+        width: auto;
+        padding: 0;
+        border: 0;
+    }
+
+    .registry td {
+        margin-top: 0.3rem;
+    }
+
+    .json {
+        font-size: 0.8125rem;
+        padding: 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html,
+    .js .term-log {
+        scroll-behavior: auto;
+    }
+}
